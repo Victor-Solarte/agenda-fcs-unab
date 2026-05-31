@@ -2,1675 +2,830 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Agenda Estratégica – Facultad de Ciencias de la Salud UNAB</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Agenda Estratégica FCS UNAB 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Lora:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <style>
-:root {
-  --navy: #0e1f40;
-  --navy-mid: #1a3260;
-  --navy-light: #243d72;
-  --teal: #1b6b6e;
-  --teal-light: #2a9a9e;
-  --emerald: #1e6b4a;
-  --emerald-light: #2a9a6e;
-  --gold: #c4902a;
-  --gold-light: #e8b84b;
-  --amber: #e07b2a;
-  --red-priority: #c0392b;
-  --red-soft: #e74c3c;
-  --blue-mid: #2980b9;
-  --gray-low: #7f8c8d;
-  --off-white: #f7f6f2;
-  --white: #ffffff;
-  --card-bg: #ffffff;
-  --border: #dde3ee;
-  --text-main: #1a1f2e;
-  --text-sub: #4a5568;
-  --text-light: #718096;
-  --section-alt: #f0f4f9;
-  --section-dark: #0e1f40;
+:root{
+  --o:#F08020; --od:#C8600A; --os:#FEF4E8; --ob:#FDEBD0;
+  --s:#006B6E; --sd:#004D50; --sp:#E0F4F4;
+  --k:#0D1117; --k7:rgba(13,17,23,.7); --k4:rgba(13,17,23,.42); --k1:rgba(13,17,23,.1);
+  --w:#fff; --g:#F7F5F1; --g2:#EEECE6; --br:#E0DBD3;
+  --r:#C0392B; --b:#1F6BAA; --gr:#5D6D7E; --gl:#E6B800;
+  --nav:64px; --rsm:8px; --rmd:14px; --rlg:20px;
 }
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body {
-  font-family: 'DM Sans', sans-serif;
-  color: var(--text-main);
-  background: var(--white);
-  overflow-x: hidden;
-  line-height: 1.6;
-}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;color:var(--k);background:var(--w);overflow-x:hidden;line-height:1.6}
 
-/* ── NAV ── */
-nav {
-  position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
-  background: rgba(14,31,64,0.97);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(196,144,42,0.3);
-  padding: 0 2rem;
-  display: flex; align-items: center; justify-content: space-between;
-  height: 62px;
-}
-.nav-brand {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.75rem;
-  color: var(--gold-light);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-.nav-links { display: flex; gap: 0.25rem; }
-.nav-links a {
-  color: rgba(255,255,255,0.72);
-  text-decoration: none;
-  font-size: 0.78rem;
-  font-weight: 500;
-  padding: 0.4rem 0.75rem;
-  border-radius: 4px;
-  letter-spacing: 0.03em;
-  transition: all 0.2s;
-}
-.nav-links a:hover { color: #fff; background: rgba(196,144,42,0.18); }
+/* ── NAV ─────────────────────────────── */
+#nav{position:fixed;top:0;left:0;width:100%;height:var(--nav);z-index:999;
+  background:var(--w);border-bottom:3px solid var(--o);
+  box-shadow:0 2px 24px rgba(0,0,0,.07);
+  display:flex;align-items:center;justify-content:space-between;padding:0 2rem}
+.nl{display:flex;align-items:center;gap:.85rem;text-decoration:none}
+.nl img{height:36px;width:36px;border-radius:7px;object-fit:cover;flex-shrink:0}
+.nl-t .t1{font-size:.8rem;font-weight:800;color:var(--k);letter-spacing:-.01em}
+.nl-t .t2{font-size:.66rem;font-weight:600;color:var(--s);text-transform:uppercase;letter-spacing:.05em}
+.nr{display:flex;gap:2px}
+.nr a{font-size:.72rem;font-weight:600;color:var(--k7);text-decoration:none;
+  padding:.38rem .65rem;border-radius:6px;transition:all .18s;white-space:nowrap}
+.nr a:hover,.nr a.act{color:var(--o);background:var(--os)}
 
-/* ── SECTIONS ── */
-section { padding: 5rem 2rem; }
-.container { max-width: 1200px; margin: 0 auto; }
-.section-label {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.72rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--teal-light);
-  margin-bottom: 0.75rem;
-}
-.section-title {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
-  font-weight: 700;
-  color: var(--navy);
-  line-height: 1.2;
-  margin-bottom: 1rem;
-}
-.section-title.light { color: var(--white); }
-.section-sub {
-  font-size: 1.05rem;
-  color: var(--text-sub);
-  max-width: 720px;
-  line-height: 1.7;
-}
+/* ── LAYOUT ──────────────────────────── */
+.w{max-width:1220px;margin:0 auto;padding:0 1.75rem}
+section{padding:5rem 1.75rem}
+.tag{font-size:.65rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--o);display:flex;align-items:center;gap:.55rem;margin-bottom:.55rem}
+.tag::before{content:'';width:18px;height:2px;background:var(--o);display:inline-block;flex-shrink:0}
+.tag.sv{color:var(--gl)}.tag.sv::before{background:var(--gl)}
+.h1{font-family:'Lora',serif;font-size:clamp(1.7rem,3vw,2.4rem);font-weight:700;line-height:1.16;margin-bottom:.85rem}
+.h2{font-family:'Lora',serif;font-size:clamp(1.2rem,2vw,1.65rem);font-weight:700;line-height:1.2;margin-bottom:.65rem}
+.lead{font-size:.98rem;color:var(--k7);max-width:700px;line-height:1.72}
+.inv{color:var(--w)}.inv.tag{color:var(--gl)}.inv.tag::before{background:var(--gl)}
 
-/* ── HERO ── */
-#inicio {
-  background: var(--navy);
-  min-height: 100vh;
-  display: flex; align-items: center;
-  padding: 7rem 2rem 5rem;
-  position: relative;
-  overflow: hidden;
-}
-#inicio::before {
-  content: '';
-  position: absolute; inset: 0;
-  background:
-    radial-gradient(ellipse 70% 60% at 80% 40%, rgba(27,107,110,0.18) 0%, transparent 70%),
-    radial-gradient(ellipse 50% 50% at 15% 70%, rgba(196,144,42,0.10) 0%, transparent 60%);
-}
-.hero-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: center;
-  position: relative;
-  z-index: 1;
-}
-.hero-eyebrow {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.72rem;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--gold-light);
-  margin-bottom: 1.25rem;
-  display: flex; align-items: center; gap: 0.75rem;
-}
-.hero-eyebrow::before {
-  content: '';
-  display: inline-block; width: 28px; height: 2px;
-  background: var(--gold);
-}
-.hero-title {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(2.2rem, 4.5vw, 3.6rem);
-  font-weight: 900;
-  color: var(--white);
-  line-height: 1.12;
-  margin-bottom: 1.25rem;
-}
-.hero-title em {
-  font-style: normal;
-  background: linear-gradient(135deg, var(--gold-light), var(--amber));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-.hero-sub {
-  font-size: 0.95rem;
-  color: rgba(255,255,255,0.65);
-  line-height: 1.7;
-  margin-bottom: 2rem;
-  max-width: 520px;
-}
-.hero-quote {
-  border-left: 3px solid var(--gold);
-  padding: 1rem 1.25rem;
-  background: rgba(196,144,42,0.08);
-  border-radius: 0 8px 8px 0;
-  font-size: 0.92rem;
-  color: rgba(255,255,255,0.82);
-  font-style: italic;
-  line-height: 1.6;
-  margin-bottom: 2rem;
-}
-.hero-ctas { display: flex; gap: 0.75rem; flex-wrap: wrap; }
-.btn {
-  display: inline-flex; align-items: center; gap: 0.5rem;
-  padding: 0.7rem 1.4rem;
-  border-radius: 6px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  cursor: pointer;
-  text-decoration: none;
-  border: none;
-  transition: all 0.2s;
-  letter-spacing: 0.02em;
-}
-.btn-primary {
-  background: linear-gradient(135deg, var(--gold), var(--amber));
-  color: #fff;
-}
-.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(196,144,42,0.4); }
-.btn-outline {
-  background: transparent;
-  color: rgba(255,255,255,0.85);
-  border: 1px solid rgba(255,255,255,0.3);
-}
-.btn-outline:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.6); }
+.rv{opacity:0;transform:translateY(20px);transition:opacity .6s,transform .6s}
+.rv.d1{transition-delay:.1s}.rv.d2{transition-delay:.2s}.rv.d3{transition-delay:.3s}
+.rv.on{opacity:1;transform:none}
 
-/* Metrics */
-.hero-metrics { display: flex; flex-direction: column; gap: 1.5rem; }
-.metric-card {
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 12px;
-  padding: 1.5rem 2rem;
-  backdrop-filter: blur(8px);
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.3s, border-color 0.3s;
-}
-.metric-card::before {
-  content: '';
-  position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
-}
-.metric-card.m1::before { background: linear-gradient(180deg, var(--gold), var(--amber)); }
-.metric-card.m2::before { background: linear-gradient(180deg, var(--teal-light), var(--emerald-light)); }
-.metric-card.m3::before { background: linear-gradient(180deg, var(--blue-mid), var(--teal-light)); }
-.metric-card:hover { transform: translateX(4px); border-color: rgba(255,255,255,0.25); }
-.metric-num {
-  font-family: 'Playfair Display', serif;
-  font-size: 3.2rem;
-  font-weight: 900;
-  line-height: 1;
-  margin-bottom: 0.35rem;
-}
-.metric-card.m1 .metric-num { color: var(--gold-light); }
-.metric-card.m2 .metric-num { color: var(--teal-light); }
-.metric-card.m3 .metric-num { color: #6eb8d4; }
-.metric-label {
-  font-size: 0.88rem;
-  color: rgba(255,255,255,0.65);
-  font-weight: 500;
-}
+.btn{display:inline-flex;align-items:center;gap:.45rem;padding:.65rem 1.3rem;
+  border-radius:7px;font-size:.83rem;font-weight:700;text-decoration:none;
+  border:none;cursor:pointer;transition:all .22s;font-family:'Outfit',sans-serif}
+.bo{background:var(--o);color:#fff}.bo:hover{background:var(--od);transform:translateY(-2px);box-shadow:0 8px 20px rgba(240,128,32,.38)}
+.bs{background:var(--s);color:#fff}.bs:hover{background:var(--sd);transform:translateY(-2px)}
+.bg{background:transparent;color:var(--k);border:1.5px solid var(--br)}.bg:hover{border-color:var(--o);color:var(--o)}
+.bwi{background:rgba(255,255,255,.15);color:#fff;border:1.5px solid rgba(255,255,255,.3)}.bwi:hover{background:rgba(255,255,255,.25)}
+.bw{background:#fff;color:var(--od);font-weight:800}.bw:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(0,0,0,.18)}
 
-/* ── MENSAJE EJECUTIVO ── */
-#mensaje { background: var(--off-white); }
-.message-block {
-  background: var(--white);
-  border-radius: 16px;
-  padding: 2.5rem 3rem;
-  border-left: 6px solid var(--navy);
-  box-shadow: 0 4px 24px rgba(14,31,64,0.08);
-  font-size: 1.05rem;
-  color: var(--text-sub);
-  line-height: 1.8;
-  margin-bottom: 2.5rem;
-}
-.transform-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.25rem;
-  margin-top: 2rem;
-}
-.transform-card {
-  background: var(--white);
-  border-radius: 12px;
-  padding: 1.5rem;
-  text-align: center;
-  box-shadow: 0 2px 12px rgba(14,31,64,0.06);
-  border: 1px solid var(--border);
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-.transform-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(14,31,64,0.12); }
-.transform-from {
-  font-size: 0.82rem;
-  color: var(--text-light);
-  padding: 0.4rem 0.75rem;
-  background: #fef3e2;
-  border-radius: 20px;
-  margin-bottom: 0.75rem;
-  display: inline-block;
-  font-weight: 500;
-}
-.transform-arrow { font-size: 1.4rem; color: var(--teal); margin: 0.5rem 0; }
-.transform-to {
-  font-size: 0.82rem;
-  color: var(--white);
-  padding: 0.4rem 0.75rem;
-  background: var(--navy);
-  border-radius: 20px;
-  display: inline-block;
-  font-weight: 600;
-}
+/* ── HERO ────────────────────────────── */
+#hero{background:var(--g);padding-top:calc(var(--nav) + 3.5rem);padding-bottom:4.5rem;
+  position:relative;overflow:hidden}
+#hero::after{content:'';position:absolute;top:0;right:0;width:36%;height:100%;
+  background:linear-gradient(135deg,transparent,var(--os));
+  clip-path:polygon(18% 0%,100% 0%,100% 100%,0% 100%);pointer-events:none}
+.hg{display:grid;grid-template-columns:1fr 390px;gap:4rem;align-items:center;position:relative;z-index:1}
+.hchip{display:inline-flex;align-items:center;gap:.5rem;background:var(--ob);
+  border:1px solid var(--o);border-radius:20px;padding:.28rem .85rem;
+  font-size:.7rem;font-weight:700;color:var(--od);letter-spacing:.08em;text-transform:uppercase;margin-bottom:1.1rem}
+.hh{font-family:'Lora',serif;font-size:clamp(2rem,3.8vw,3rem);font-weight:700;line-height:1.1;margin-bottom:.9rem}
+.hh strong{color:var(--o)}
+.hp{font-size:1.01rem;color:var(--k7);line-height:1.72;margin-bottom:1.6rem;max-width:540px}
+.hq{border-left:4px solid var(--o);background:var(--w);padding:.9rem 1.15rem;
+  border-radius:0 var(--rsm) var(--rsm) 0;font-style:italic;font-size:.89rem;
+  color:var(--k7);line-height:1.6;margin-bottom:1.7rem;
+  box-shadow:0 2px 12px rgba(0,0,0,.06)}
+.hbtns{display:flex;gap:.7rem;flex-wrap:wrap}
 
-/* ── HALLAZGOS ── */
-#hallazgos { background: var(--white); }
-.charts-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  margin: 2.5rem 0;
-}
-.chart-card {
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 1.5rem;
-  box-shadow: 0 2px 12px rgba(14,31,64,0.06);
-}
-.chart-card h4 {
-  font-family: 'Playfair Display', serif;
-  font-size: 1rem;
-  color: var(--navy);
-  margin-bottom: 1rem;
-  font-weight: 600;
-}
-.chart-canvas-wrap { position: relative; height: 260px; }
-.donut-wrap { display: flex; align-items: center; justify-content: center; gap: 2rem; }
-.donut-legend { display: flex; flex-direction: column; gap: 0.75rem; }
-.legend-item { display: flex; align-items: center; gap: 0.6rem; font-size: 0.85rem; }
-.legend-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
-.finding-cards {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.25rem;
-  margin-top: 2rem;
-}
-.finding-card {
-  border-radius: 12px;
-  padding: 1.5rem;
-  border: 1px solid var(--border);
-  position: relative;
-  overflow: hidden;
-}
-.finding-card::before {
-  content: '';
-  position: absolute; inset: 0;
-  opacity: 0.06;
-  border-radius: 12px;
-}
-.fc1 { border-color: #c4902a44; }
-.fc1::before { background: var(--gold); }
-.fc2 { border-color: #c0392b44; }
-.fc2::before { background: var(--red-soft); }
-.fc3 { border-color: #1b6b6e44; }
-.fc3::before { background: var(--teal); }
-.fc4 { border-color: #2980b944; }
-.fc4::before { background: var(--blue-mid); }
-.finding-icon { font-size: 1.6rem; margin-bottom: 0.5rem; }
-.finding-card h5 { font-size: 0.78rem; font-family: 'DM Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-light); margin-bottom: 0.35rem; }
-.finding-card p { font-size: 0.9rem; color: var(--text-sub); line-height: 1.5; }
-.interpretation-block {
-  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
-  color: rgba(255,255,255,0.9);
-  border-radius: 12px;
-  padding: 1.5rem 2rem;
-  font-style: italic;
-  font-size: 0.95rem;
-  line-height: 1.7;
-  margin-top: 2rem;
-  border-left: 4px solid var(--gold);
-}
+/* Quick nav card */
+.qnc{background:var(--w);border-radius:var(--rlg);padding:1.6rem;
+  box-shadow:0 8px 40px rgba(0,0,0,.09);border:1px solid var(--br)}
+.qnt{font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--k4);margin-bottom:.85rem;padding-bottom:.7rem;border-bottom:1px solid var(--br)}
+.qi{display:flex;align-items:center;gap:.75rem;padding:.62rem .4rem;
+  border-radius:var(--rsm);text-decoration:none;color:var(--k);transition:all .18s;
+  border-bottom:1px solid var(--g)}
+.qi:last-child{border-bottom:none}
+.qi:hover{background:var(--g);transform:translateX(4px)}
+.qi-ic{width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0}
+.qi-t1{font-size:.8rem;font-weight:700;line-height:1.2}
+.qi-t2{font-size:.68rem;color:var(--k4)}
+.qi-ar{margin-left:auto;color:var(--k4);font-size:.75rem}
 
-/* ── TENSIONES ── */
-#lectura { background: var(--section-alt); }
-.tensions-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  margin: 2.5rem 0;
-}
-.tension-card {
-  background: var(--white);
-  border-radius: 16px;
-  padding: 2rem;
-  box-shadow: 0 2px 12px rgba(14,31,64,0.06);
-  border-top: 4px solid transparent;
-  transition: transform 0.25s, box-shadow 0.25s;
-}
-.tension-card:hover { transform: translateY(-6px); box-shadow: 0 12px 32px rgba(14,31,64,0.14); }
-.tension-card:nth-child(1) { border-top-color: var(--gold); }
-.tension-card:nth-child(2) { border-top-color: var(--teal); }
-.tension-card:nth-child(3) { border-top-color: var(--emerald); }
-.tension-icon { font-size: 2rem; margin-bottom: 1rem; }
-.tension-card h3 { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: var(--navy); margin-bottom: 0.75rem; }
-.tension-card p { font-size: 0.9rem; color: var(--text-sub); line-height: 1.65; }
-.closing-quote {
-  background: var(--navy);
-  color: rgba(255,255,255,0.9);
-  border-radius: 12px;
-  padding: 2rem;
-  text-align: center;
-  font-family: 'Playfair Display', serif;
-  font-size: 1.1rem;
-  font-style: italic;
-  line-height: 1.6;
-  margin-top: 1.5rem;
-  border: 1px solid rgba(196,144,42,0.3);
-}
+/* ── KPI BAR ─────────────────────────── */
+#kpis{background:linear-gradient(135deg,var(--sd) 0%,#001E20 100%);padding:0;overflow:hidden}
+.kbar{display:grid;grid-template-columns:repeat(5,1fr)}
+.kitem{padding:1.8rem 1.5rem;border-right:1px solid rgba(255,255,255,.08);
+  display:flex;align-items:center;gap:1.1rem;transition:background .18s}
+.kitem:last-child{border-right:none}
+.kitem:hover{background:rgba(255,255,255,.06)}
+.knum{font-family:'Lora',serif;font-size:2.1rem;font-weight:700;color:var(--o);line-height:1}
+.ktxt{font-size:.78rem;color:rgba(255,255,255,.68);line-height:1.4;font-weight:500}
 
-/* ── FRENTES ESTRATÉGICOS ── */
-#oportunidades { background: var(--white); }
-.frentes-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.25rem;
-  margin-top: 2.5rem;
-}
-.frente-card {
-  border-radius: 14px;
-  border: 1px solid var(--border);
-  overflow: hidden;
-  transition: box-shadow 0.25s;
-  cursor: pointer;
-}
-.frente-card:hover { box-shadow: 0 8px 28px rgba(14,31,64,0.13); }
-.frente-header {
-  padding: 1.25rem 1.25rem 1rem;
-  position: relative;
-}
-.frente-num {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.7rem;
-  letter-spacing: 0.12em;
-  color: rgba(255,255,255,0.7);
-  margin-bottom: 0.5rem;
-}
-.frente-icon { font-size: 1.6rem; margin-bottom: 0.5rem; }
-.frente-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: var(--white);
-  line-height: 1.3;
-}
-.frente-badge {
-  display: inline-block;
-  padding: 0.2rem 0.6rem;
-  border-radius: 20px;
-  font-size: 0.7rem;
-  font-weight: 600;
-  margin-top: 0.75rem;
-  font-family: 'DM Mono', monospace;
-  letter-spacing: 0.08em;
-}
-.badge-alta { background: rgba(255,255,255,0.2); color: #fff; }
-.badge-media { background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.85); }
-.badge-progresiva { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.7); }
-.frente-body {
-  padding: 0 1.25rem;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease, padding 0.3s ease;
-  background: var(--white);
-}
-.frente-body.open {
-  max-height: 600px;
-  padding: 1.25rem;
-}
-.frente-detail { font-size: 0.83rem; color: var(--text-sub); line-height: 1.55; margin-bottom: 0.75rem; }
-.frente-detail strong { color: var(--navy); font-weight: 600; display: block; margin-bottom: 0.2rem; font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.06em; }
-.frente-toggle {
-  display: flex; align-items: center; justify-content: center;
-  padding: 0.6rem;
-  background: var(--section-alt);
-  color: var(--text-light);
-  font-size: 0.78rem;
-  cursor: pointer;
-  border: none;
-  width: 100%;
-  transition: background 0.2s;
-  gap: 0.4rem;
-}
-.frente-toggle:hover { background: var(--border); }
-.toggle-icon { transition: transform 0.3s; display: inline-block; }
-.frente-card.open .toggle-icon { transform: rotate(180deg); }
+/* ── METODOLOGÍA ─────────────────────── */
+#met{background:var(--w)}
+.met-body{font-size:.97rem;color:var(--k7);line-height:1.78;margin-bottom:2.5rem;
+  background:var(--g);border-radius:var(--rlg);padding:2rem 2.25rem;
+  border-left:5px solid var(--s)}
+.met-body p+p{margin-top:.8rem}
+.met-body strong{color:var(--k);font-weight:700}
+.steps{display:grid;grid-template-columns:repeat(5,1fr);position:relative;margin-bottom:3rem}
+.steps::before{content:'';position:absolute;top:34px;left:10%;right:10%;height:2px;
+  background:linear-gradient(90deg,var(--o),var(--s));z-index:0}
+.step{display:flex;flex-direction:column;align-items:center;text-align:center;z-index:1;padding:0 .4rem}
+.s-node{width:68px;height:68px;border-radius:50%;background:var(--w);border:3px solid var(--o);
+  display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:.8rem;
+  box-shadow:0 4px 14px rgba(240,128,32,.18);transition:all .22s;position:relative;cursor:default}
+.s-node:hover{background:var(--o);transform:scale(1.07)}
+.s-n{position:absolute;top:-7px;right:-7px;width:20px;height:20px;background:var(--s);
+  color:#fff;border-radius:50%;font-size:.6rem;font-weight:800;
+  display:flex;align-items:center;justify-content:center}
+.s-lbl{font-size:.76rem;font-weight:700;color:var(--k);line-height:1.3;margin-bottom:.25rem}
+.s-dsc{font-size:.68rem;color:var(--k4);line-height:1.4}
+.met-out{background:linear-gradient(135deg,var(--s),#001E20);border-radius:var(--rlg);
+  padding:1.75rem 2.25rem;display:flex;align-items:center;gap:1.75rem;flex-wrap:wrap}
+.mo-ic{font-size:2.4rem;flex-shrink:0}
+.mo-t1{font-family:'Lora',serif;font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:.3rem}
+.mo-t2{font-size:.87rem;color:rgba(255,255,255,.72);line-height:1.6;max-width:700px}
 
-/* Horizon badge colors */
-.h0 { color: var(--amber); font-weight: 600; font-size: 0.78rem; }
-.h1 { color: var(--teal); font-weight: 600; font-size: 0.78rem; }
-.h2 { color: var(--blue-mid); font-weight: 600; font-size: 0.78rem; }
+/* ── ANÁLISIS ESTRATÉGICO ────────────── */
+#analisis{background:var(--g)}
+.an-g{display:grid;grid-template-columns:2fr 1fr;gap:2rem;margin-top:2rem}
+.an-main{background:var(--w);border-radius:var(--rlg);padding:2.25rem;
+  border:1px solid var(--br);box-shadow:0 2px 14px rgba(0,0,0,.05)}
+.an-main p{font-size:.97rem;color:var(--k7);line-height:1.78;margin-bottom:1rem}
+.an-main p:last-child{margin-bottom:0}
+.an-main strong{color:var(--k);font-weight:700}
+.an-main em{color:var(--o);font-style:normal;font-weight:700}
+.an-side{display:flex;flex-direction:column;gap:1rem}
+.an-card{background:var(--w);border-radius:var(--rmd);padding:1.35rem;
+  border:1px solid var(--br);border-top:4px solid var(--o);
+  box-shadow:0 2px 10px rgba(0,0,0,.04);transition:all .22s}
+.an-card:hover{transform:translateY(-4px);box-shadow:0 10px 26px rgba(0,0,0,.1)}
+.an-card:nth-child(2){border-top-color:var(--s)}
+.an-card:nth-child(3){border-top-color:var(--gl)}
+.an-card:nth-child(4){border-top-color:var(--r)}
+.an-tag{font-size:.63rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--k4);margin-bottom:.45rem}
+.an-card h4{font-size:.87rem;font-weight:700;color:var(--k);line-height:1.35;margin-bottom:.35rem}
+.an-card p{font-size:.8rem;color:var(--k7);line-height:1.5}
 
-/* Color themes for frentes */
-.f1 .frente-header { background: linear-gradient(135deg, #1a3260, #243d72); }
-.f2 .frente-header { background: linear-gradient(135deg, #c0392b, #e74c3c); }
-.f3 .frente-header { background: linear-gradient(135deg, #1b6b6e, #2a9a9e); }
-.f4 .frente-header { background: linear-gradient(135deg, #7d3c98, #9b59b6); }
-.f5 .frente-header { background: linear-gradient(135deg, #1e6b4a, #2a9a6e); }
-.f6 .frente-header { background: linear-gradient(135deg, #d35400, #e67e22); }
-.f7 .frente-header { background: linear-gradient(135deg, #2471a3, #2980b9); }
-.f8 .frente-header { background: linear-gradient(135deg, #1a5276, #2e86c1); }
+/* ── HALLAZGOS ───────────────────────── */
+#hal{background:var(--w)}
+.ch2{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:2rem 0}
+.cc{background:var(--w);border:1px solid var(--br);border-radius:var(--rmd);
+  padding:1.5rem;box-shadow:0 2px 10px rgba(0,0,0,.05)}
+.cc h4{font-size:.85rem;font-weight:700;color:var(--k);margin-bottom:1.1rem;
+  padding-bottom:.65rem;border-bottom:1px solid var(--g2)}
+.chw{position:relative;height:240px}
+.drow{display:flex;align-items:center;gap:1.5rem}
+.dwp{width:155px;height:155px;flex-shrink:0;position:relative}
+.dl{display:flex;align-items:center;gap:.55rem;margin-bottom:.7rem;font-size:.82rem;font-weight:500}
+.dld{width:11px;height:11px;border-radius:3px;flex-shrink:0}
+.fg4{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:1.5rem}
+.fg{border-radius:var(--rmd);padding:1.2rem;border:1px solid var(--br);transition:all .22s}
+.fg:hover{transform:translateY(-3px);box-shadow:0 8px 22px rgba(0,0,0,.1)}
+.fg-ic{font-size:1.4rem;margin-bottom:.5rem}
+.fg-lb{font-size:.63rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--k4);margin-bottom:.3rem}
+.fg-tx{font-size:.82rem;color:var(--k7);line-height:1.45}
+.insight-bar{background:linear-gradient(135deg,var(--s),#001E20);
+  border-radius:var(--rmd);padding:1.4rem 1.9rem;color:rgba(255,255,255,.9);
+  font-style:italic;font-size:.91rem;line-height:1.7;margin-top:1.5rem;
+  border-left:4px solid var(--o)}
 
-/* ── MATRIZ PRIORIDADES ── */
-#prioridades { background: var(--section-alt); }
-.matrix-container {
-  background: var(--white);
-  border-radius: 16px;
-  padding: 2rem;
-  box-shadow: 0 2px 16px rgba(14,31,64,0.08);
-  margin-top: 2rem;
-}
-.matrix-chart-wrap { position: relative; height: 440px; }
-.matrix-interpretation {
-  background: var(--navy);
-  color: rgba(255,255,255,0.9);
-  border-radius: 10px;
-  padding: 1.25rem 1.75rem;
-  font-size: 0.92rem;
-  line-height: 1.7;
-  margin-top: 1.5rem;
-  border-left: 4px solid var(--gold);
-}
-.matrix-legend {
-  display: flex; gap: 2rem; justify-content: center;
-  margin-top: 1.5rem; flex-wrap: wrap;
-}
-.ml-item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.84rem; color: var(--text-sub); }
-.ml-dot { width: 14px; height: 14px; border-radius: 50%; flex-shrink: 0; }
+/* ── TENSIONES ───────────────────────── */
+#lec{background:var(--g)}
+.t3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin:2.5rem 0}
+.tc{background:var(--w);border-radius:var(--rlg);padding:1.9rem;
+  border:1px solid var(--br);box-shadow:0 2px 12px rgba(0,0,0,.05);
+  transition:all .26s;position:relative;overflow:hidden}
+.tc:hover{transform:translateY(-5px);box-shadow:0 14px 36px rgba(0,0,0,.11)}
+.tc::before{content:'';position:absolute;top:0;left:0;right:0;height:4px}
+.tc:nth-child(1)::before{background:var(--o)}
+.tc:nth-child(2)::before{background:var(--s)}
+.tc:nth-child(3)::before{background:var(--gl)}
+.tc-ic{width:44px;height:44px;border-radius:var(--rsm);
+  display:flex;align-items:center;justify-content:center;font-size:1.25rem;margin-bottom:.9rem}
+.tc:nth-child(1) .tc-ic{background:var(--ob);color:var(--od)}
+.tc:nth-child(2) .tc-ic{background:var(--sp);color:var(--s)}
+.tc:nth-child(3) .tc-ic{background:#FFF8E1;color:#B7860A}
+.tc h3{font-family:'Lora',serif;font-size:1rem;font-weight:700;color:var(--k);margin-bottom:.6rem}
+.tc p{font-size:.86rem;color:var(--k7);line-height:1.6}
+.cq{background:var(--k);color:rgba(255,255,255,.9);border-radius:var(--rmd);
+  padding:1.6rem 2rem;text-align:center;font-family:'Lora',serif;
+  font-size:1rem;font-style:italic;line-height:1.65;margin-top:1.5rem}
 
-/* ── JOURNEY ── */
-#journey { background: var(--white); overflow: hidden; }
-.journey-container {
-  margin-top: 2.5rem;
-  overflow-x: auto;
-  padding-bottom: 1rem;
-}
-.journey-track {
-  display: flex;
-  gap: 0;
-  min-width: 960px;
-  position: relative;
-}
-.journey-track::before {
-  content: '';
-  position: absolute;
-  top: 52px;
-  left: 0; right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--navy), var(--teal), var(--emerald), var(--gold));
-  z-index: 0;
-}
-.journey-step {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  cursor: pointer;
-}
-.journey-node {
-  width: 52px; height: 52px;
-  border-radius: 50%;
-  background: var(--white);
-  border: 3px solid var(--navy);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.3rem;
-  z-index: 1;
-  position: relative;
-  transition: all 0.25s;
-  box-shadow: 0 4px 12px rgba(14,31,64,0.15);
-}
-.journey-step:hover .journey-node,
-.journey-step.active .journey-node {
-  background: var(--navy);
-  transform: scale(1.15);
-  box-shadow: 0 6px 20px rgba(14,31,64,0.3);
-}
-.journey-step-label {
-  font-size: 0.72rem;
-  font-weight: 600;
-  color: var(--navy);
-  text-align: center;
-  margin-top: 0.6rem;
-  line-height: 1.3;
-  max-width: 90px;
-  font-family: 'DM Mono', monospace;
-  letter-spacing: 0.04em;
-}
-.journey-detail-panel {
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 2rem;
-  margin-top: 2rem;
-  box-shadow: 0 4px 20px rgba(14,31,64,0.08);
-  min-height: 200px;
-  transition: opacity 0.3s;
-}
-.jd-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.25rem;
-}
-.jd-item h5 {
-  font-size: 0.72rem;
-  font-family: 'DM Mono', monospace;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--text-light);
-  margin-bottom: 0.5rem;
-}
-.jd-item p { font-size: 0.88rem; color: var(--text-sub); line-height: 1.55; }
-.jd-item .tag {
-  display: inline-block;
-  padding: 0.2rem 0.6rem;
-  background: var(--section-alt);
-  border-radius: 20px;
-  font-size: 0.76rem;
-  color: var(--navy);
-  font-weight: 600;
-  margin-bottom: 0.35rem;
-}
-.journey-phrase {
-  background: linear-gradient(135deg, var(--teal) 0%, var(--navy) 100%);
-  color: rgba(255,255,255,0.92);
-  border-radius: 12px;
-  padding: 1.5rem 2rem;
-  text-align: center;
-  font-style: italic;
-  font-size: 0.98rem;
-  line-height: 1.65;
-  margin-top: 2rem;
-}
+/* ── FRENTES ─────────────────────────── */
+#frt{background:var(--w)}
+.fg8{display:grid;grid-template-columns:repeat(4,1fr);gap:1.1rem;margin-top:2rem}
+.fc{border-radius:var(--rlg);border:1px solid var(--br);overflow:hidden;transition:box-shadow .22s;cursor:pointer}
+.fc:hover{box-shadow:0 8px 28px rgba(0,0,0,.12)}
+.fh{padding:1.2rem}
+.ft{font-size:.6rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:.45rem}
+.fi{font-size:1.4rem;margin-bottom:.45rem;display:block}
+.fn{font-family:'Lora',serif;font-size:.9rem;font-weight:700;color:#fff;line-height:1.3}
+.fp{display:inline-flex;align-items:center;gap:.28rem;margin-top:.6rem;
+  padding:.18rem .65rem;border-radius:20px;font-size:.66rem;font-weight:700;
+  background:rgba(255,255,255,.18);color:#fff}
+.c1 .fh{background:linear-gradient(135deg,#0A3D6B,#1A5C96)}
+.c2 .fh{background:linear-gradient(135deg,#7B0000,#B03030)}
+.c3 .fh{background:linear-gradient(135deg,#005558,#009090)}
+.c4 .fh{background:linear-gradient(135deg,#3A0070,#6A10A0)}
+.c5 .fh{background:linear-gradient(135deg,#1B5020,#2E8030)}
+.c6 .fh{background:linear-gradient(135deg,#A03000,#D04010)}
+.c7 .fh{background:linear-gradient(135deg,#0A3D9A,#1565C0)}
+.c8 .fh{background:linear-gradient(135deg,#003D35,#006B5A)}
+.fb{padding:0 1.2rem;max-height:0;overflow:hidden;transition:max-height .4s,padding .28s;background:var(--w)}
+.fb.op{max-height:620px;padding:1.2rem}
+.fd{font-size:.81rem;color:var(--k7);line-height:1.5;margin-bottom:.75rem}
+.fd strong{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--k4);display:block;margin-bottom:.2rem}
+.ftg{width:100%;border:none;background:var(--g);padding:.5rem;
+  font-size:.73rem;color:var(--k4);cursor:pointer;
+  display:flex;align-items:center;justify-content:center;gap:.35rem;
+  transition:background .18s;font-family:'Outfit',sans-serif;font-weight:600}
+.ftg:hover{background:var(--g2)}
+.ta{transition:transform .3s;display:inline-block}
 
-/* ── HOJA DE RUTA ── */
-#hoja-de-ruta { background: var(--section-dark); }
-#hoja-de-ruta .section-label { color: var(--gold-light); }
-.timeline-tabs {
-  display: flex; gap: 0.5rem; margin-top: 2.5rem;
-}
-.tl-tab {
-  padding: 0.65rem 1.5rem;
-  border-radius: 8px 8px 0 0;
-  font-size: 0.85rem;
-  font-weight: 600;
-  cursor: pointer;
-  border: none;
-  background: rgba(255,255,255,0.08);
-  color: rgba(255,255,255,0.55);
-  transition: all 0.2s;
-  letter-spacing: 0.03em;
-}
-.tl-tab.active {
-  background: var(--gold);
-  color: var(--navy);
-}
-.tl-panel {
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 0 12px 12px 12px;
-  padding: 2rem;
-  display: none;
-}
-.tl-panel.active { display: block; }
-.tl-header {
-  display: flex; align-items: flex-start; justify-content: space-between;
-  margin-bottom: 1.5rem;
-  flex-wrap: wrap; gap: 1rem;
-}
-.tl-phase-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.5rem;
-  color: var(--white);
-  margin-bottom: 0.35rem;
-}
-.tl-objective {
-  font-size: 0.88rem;
-  color: rgba(255,255,255,0.65);
-  line-height: 1.5;
-  max-width: 500px;
-}
-.tl-badge {
-  background: var(--gold);
-  color: var(--navy);
-  padding: 0.4rem 1rem;
-  border-radius: 20px;
-  font-family: 'DM Mono', monospace;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  white-space: nowrap;
-}
-.tl-actions {
-  display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem;
-}
-.tl-action {
-  display: flex; align-items: flex-start; gap: 0.75rem;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 8px;
-  padding: 0.85rem 1rem;
-}
-.tl-bullet {
-  width: 20px; height: 20px; border-radius: 50%;
-  background: var(--gold);
-  flex-shrink: 0;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 0.65rem;
-  font-weight: 800;
-  color: var(--navy);
-  margin-top: 2px;
-}
-.tl-action p { font-size: 0.86rem; color: rgba(255,255,255,0.78); line-height: 1.45; }
-.tl-product {
-  background: rgba(196,144,42,0.12);
-  border: 1px solid rgba(196,144,42,0.3);
-  border-radius: 8px;
-  padding: 1rem 1.25rem;
-  margin-top: 1.5rem;
-}
-.tl-product h5 {
-  font-size: 0.72rem;
-  font-family: 'DM Mono', monospace;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--gold-light);
-  margin-bottom: 0.5rem;
-}
-.tl-product p { font-size: 0.88rem; color: rgba(255,255,255,0.75); line-height: 1.5; }
+/* ── MATRIZ ──────────────────────────── */
+#mat{background:var(--g)}
+.mwrap{background:var(--w);border-radius:var(--rlg);padding:1.5rem 2rem 2rem;
+  border:1px solid var(--br);box-shadow:0 2px 14px rgba(0,0,0,.06);margin-top:2rem}
+.mhint{text-align:center;font-size:.76rem;color:var(--k4);margin-bottom:.65rem;
+  display:flex;align-items:center;justify-content:center;gap:.4rem}
+#msvg{width:100%;height:460px;display:block;cursor:default}
+.mleg{display:flex;gap:2rem;justify-content:center;margin-top:1.1rem;flex-wrap:wrap}
+.ml{display:flex;align-items:center;gap:.45rem;font-size:.8rem;font-weight:500;color:var(--k7)}
+.mld{width:12px;height:12px;border-radius:50%}
+.mint{background:linear-gradient(135deg,var(--s),#001E20);border-radius:var(--rmd);
+  padding:1.2rem 1.75rem;color:rgba(255,255,255,.9);font-size:.89rem;
+  line-height:1.7;margin-top:1.5rem;border-left:4px solid var(--o)}
+#mttip{position:fixed;background:rgba(8,18,32,.93);color:#fff;
+  padding:.6rem 1rem;border-radius:8px;font-size:.76rem;font-weight:600;
+  pointer-events:none;display:none;z-index:9999;line-height:1.5;
+  max-width:220px;border:1px solid rgba(255,255,255,.12);box-shadow:0 4px 20px rgba(0,0,0,.4)}
 
-/* ── DECISIONES ── */
-#decisiones { background: var(--white); }
-.decisions-grid {
-  display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem;
-  margin: 2.5rem 0;
-}
-.decision-card {
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 1.5rem 1.25rem;
-  text-align: center;
-  box-shadow: 0 2px 10px rgba(14,31,64,0.06);
-  transition: all 0.25s;
-  cursor: default;
-}
-.decision-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 28px rgba(14,31,64,0.14);
-  border-color: var(--navy);
-}
-.decision-num {
-  width: 36px; height: 36px;
-  border-radius: 50%;
-  background: var(--navy);
-  color: var(--white);
-  display: flex; align-items: center; justify-content: center;
-  font-weight: 700;
-  font-size: 0.9rem;
-  margin: 0 auto 1rem;
-}
-.decision-card h4 {
-  font-size: 0.85rem;
-  color: var(--navy);
-  font-weight: 600;
-  line-height: 1.4;
-}
-.ninety-block {
-  background: linear-gradient(135deg, var(--navy) 0%, #1a3260 100%);
-  border-radius: 16px;
-  padding: 2.5rem;
-  border: 1px solid rgba(196,144,42,0.3);
-}
-.ninety-block h3 {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.4rem;
-  color: var(--gold-light);
-  margin-bottom: 1.5rem;
-  display: flex; align-items: center; gap: 0.75rem;
-}
-.ninety-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
-.ninety-item {
-  background: rgba(255,255,255,0.07);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 10px;
-  padding: 1rem 1.25rem;
-  display: flex; gap: 0.75rem; align-items: flex-start;
-}
-.ninety-check { color: var(--gold-light); font-size: 1.1rem; flex-shrink: 0; margin-top: 1px; }
-.ninety-item p { font-size: 0.86rem; color: rgba(255,255,255,0.78); line-height: 1.45; }
+/* ── JOURNEY ─────────────────────────── */
+#jou{background:var(--w)}
+.jsc{overflow-x:auto;padding-bottom:1rem;margin-top:2.5rem}
+.jtr{display:flex;gap:0;min-width:900px;position:relative}
+.jtr::before{content:'';position:absolute;top:34px;left:5%;right:5%;height:3px;
+  background:linear-gradient(90deg,var(--o),var(--s));z-index:0}
+.js{flex:1;display:flex;flex-direction:column;align-items:center;cursor:pointer;padding:0 .2rem}
+.jnd{width:68px;height:68px;border-radius:50%;background:var(--w);border:3px solid var(--br);
+  display:flex;align-items:center;justify-content:center;font-size:1.25rem;
+  z-index:1;position:relative;transition:all .22s;box-shadow:0 2px 10px rgba(0,0,0,.07)}
+.js:hover .jnd,.js.sel .jnd{background:var(--o);border-color:var(--o);
+  box-shadow:0 6px 20px rgba(240,128,32,.38);transform:scale(1.1)}
+.jlb{font-size:.66rem;font-weight:700;text-align:center;color:var(--k);
+  margin-top:.6rem;line-height:1.3;max-width:80px}
+.js.sel .jlb{color:var(--o)}
+.jpan{background:var(--w);border:1px solid var(--br);border-radius:var(--rlg);
+  padding:1.75rem;margin-top:1.75rem;min-height:185px;
+  box-shadow:0 4px 20px rgba(0,0,0,.06);transition:opacity .25s}
+.jptit{font-family:'Lora',serif;font-size:1.2rem;font-weight:700;color:var(--k);margin-bottom:1.1rem}
+.jpg{display:grid;grid-template-columns:repeat(4,1fr);gap:1.1rem}
+.ji h5{font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--k4);margin-bottom:.4rem}
+.ji p{font-size:.84rem;color:var(--k7);line-height:1.5}
+.jtag{display:inline-block;background:var(--ob);color:var(--od);border-radius:20px;
+  padding:.15rem .55rem;font-size:.7rem;font-weight:700;margin:.18rem .18rem 0 0}
+.jhint{color:var(--k4);text-align:center;font-size:.88rem;padding:1.75rem 0}
+.jph{background:linear-gradient(135deg,var(--o),var(--od));border-radius:var(--rmd);
+  padding:1.4rem 1.9rem;text-align:center;color:#fff;font-style:italic;
+  font-size:.93rem;line-height:1.65;margin-top:1.75rem}
 
-/* ── CIERRE ── */
-#cierre {
-  background: linear-gradient(135deg, var(--navy) 0%, var(--teal) 60%, var(--emerald) 100%);
-  text-align: center;
-  padding: 6rem 2rem;
-  position: relative;
-  overflow: hidden;
-}
-#cierre::before {
-  content: '';
-  position: absolute; inset: 0;
-  background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(196,144,42,0.12) 0%, transparent 70%);
-}
-.cierre-main {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(1.5rem, 3.5vw, 2.4rem);
-  font-weight: 700;
-  color: var(--white);
-  line-height: 1.3;
-  max-width: 860px;
-  margin: 0 auto 1.5rem;
-  position: relative;
-}
-.cierre-main em {
-  font-style: normal;
-  background: linear-gradient(90deg, var(--gold-light), var(--amber));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-.cierre-sub {
-  color: rgba(255,255,255,0.75);
-  font-size: 0.95rem;
-  line-height: 1.7;
-  max-width: 680px;
-  margin: 0 auto 2.5rem;
-  position: relative;
-}
-.cierre-footer {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.72rem;
-  color: rgba(255,255,255,0.4);
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  margin-top: 3rem;
-  position: relative;
-}
+/* ── HOJA DE RUTA ────────────────────── */
+#hdr{background:linear-gradient(160deg,var(--k) 0%,#18293A 100%);position:relative;overflow:hidden}
+#hdr::before{content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 50% 60% at 82% 28%,rgba(240,128,32,.13),transparent 58%),
+             radial-gradient(circle 220px at 5% 78%,rgba(0,107,110,.16),transparent 50%)}
+.ttabs{display:flex;gap:.45rem;margin-top:2.5rem}
+.ttab{padding:.6rem 1.4rem;border-radius:7px 7px 0 0;font-size:.8rem;font-weight:700;
+  cursor:pointer;border:none;background:rgba(255,255,255,.08);color:rgba(255,255,255,.48);
+  transition:all .2s;font-family:'Outfit',sans-serif}
+.ttab.on{background:var(--o);color:#fff}
+.tpan{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);
+  border-radius:0 12px 12px 12px;padding:1.9rem;display:none;position:relative;z-index:1}
+.tpan.on{display:block}
+.ttp{display:flex;align-items:flex-start;justify-content:space-between;gap:1.5rem;
+  margin-bottom:1.6rem;flex-wrap:wrap}
+.tptit{font-family:'Lora',serif;font-size:1.4rem;color:#fff;margin-bottom:.28rem}
+.tpobj{font-size:.86rem;color:rgba(255,255,255,.62);line-height:1.5;max-width:480px}
+.tbdg{background:var(--o);color:#fff;padding:.38rem .95rem;border-radius:20px;
+  font-size:.7rem;font-weight:800;letter-spacing:.1em;white-space:nowrap;font-family:'Outfit',sans-serif}
+.tacts{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
+.ta2{display:flex;gap:.7rem;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.07);
+  border-radius:var(--rsm);padding:.8rem .95rem;align-items:flex-start}
+.tdt{width:20px;height:20px;border-radius:50%;background:var(--o);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:.62rem;font-weight:800;flex-shrink:0;margin-top:1px}
+.ta2 p{font-size:.84rem;color:rgba(255,255,255,.78);line-height:1.45}
+.tprod{background:rgba(240,128,32,.1);border:1px solid rgba(240,128,32,.28);
+  border-radius:var(--rsm);padding:.95rem 1.2rem;margin-top:1.4rem}
+.tprod h5{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;
+  color:var(--gl);margin-bottom:.38rem}
+.tprod p{font-size:.84rem;color:rgba(255,255,255,.72);line-height:1.5}
 
-/* ── RESPONSIVE ── */
-@media (max-width: 1100px) {
-  .frentes-grid { grid-template-columns: repeat(2, 1fr); }
-}
-@media (max-width: 900px) {
-  .hero-grid { grid-template-columns: 1fr; }
-  .hero-metrics { flex-direction: row; flex-wrap: wrap; }
-  .metric-card { flex: 1; min-width: 180px; }
-  .charts-grid { grid-template-columns: 1fr; }
-  .tensions-grid { grid-template-columns: 1fr; }
-  .transform-grid { grid-template-columns: repeat(2, 1fr); }
-  .jd-grid { grid-template-columns: repeat(2, 1fr); }
-  .decisions-grid { grid-template-columns: repeat(2, 1fr); }
-  .ninety-grid { grid-template-columns: repeat(2, 1fr); }
-  .tl-actions { grid-template-columns: 1fr; }
-}
-@media (max-width: 640px) {
-  .nav-links { display: none; }
-  .frentes-grid { grid-template-columns: 1fr; }
-  .finding-cards { grid-template-columns: 1fr; }
-  .decisions-grid { grid-template-columns: 1fr; }
-  .ninety-grid { grid-template-columns: 1fr; }
-  .transform-grid { grid-template-columns: 1fr; }
-}
+/* ── DECISIONES ──────────────────────── */
+#dec{background:var(--g)}
+.d5{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;margin:2rem 0}
+.dc{background:var(--w);border-radius:var(--rlg);padding:1.4rem 1.2rem;text-align:center;
+  border:1px solid var(--br);border-top:4px solid var(--o);
+  box-shadow:0 2px 10px rgba(0,0,0,.05);transition:all .22s}
+.dc:hover{transform:translateY(-5px);box-shadow:0 12px 30px rgba(0,0,0,.12);border-top-color:var(--s)}
+.dn{width:32px;height:32px;border-radius:50%;background:var(--o);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.85rem;margin:0 auto .85rem}
+.dc h4{font-size:.82rem;color:var(--k);font-weight:600;line-height:1.4}
+.n90{background:linear-gradient(135deg,var(--k),#1A3040);border-radius:var(--rlg);padding:2.25rem;border:1px solid rgba(255,255,255,.06)}
+.n90 h3{font-family:'Lora',serif;font-size:1.3rem;color:var(--gl);margin-bottom:1.4rem;display:flex;align-items:center;gap:.55rem}
+.ng{display:grid;grid-template-columns:repeat(3,1fr);gap:.9rem}
+.ni{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.09);
+  border-radius:var(--rmd);padding:.95rem 1.15rem;display:flex;gap:.7rem;align-items:flex-start}
+.nc{color:var(--o);font-size:.95rem;flex-shrink:0;margin-top:2px}
+.ni p{font-size:.83rem;color:rgba(255,255,255,.78);line-height:1.45}
 
-/* Scroll reveal animations */
-.reveal {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-.reveal-delay-1 { transition-delay: 0.1s; }
-.reveal-delay-2 { transition-delay: 0.2s; }
-.reveal-delay-3 { transition-delay: 0.3s; }
-.reveal-delay-4 { transition-delay: 0.4s; }
+/* ── CIERRE ──────────────────────────── */
+#close{background:linear-gradient(150deg,var(--o) 0%,var(--od) 38%,var(--s) 100%);
+  text-align:center;padding:5.5rem 1.75rem;position:relative;overflow:hidden}
+#close::before{content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 50% 50% at 50% 50%,rgba(255,255,255,.07),transparent 62%)}
+.ce{width:76px;height:76px;border-radius:50%;background:rgba(255,255,255,.14);
+  border:2px solid rgba(255,255,255,.3);display:flex;align-items:center;
+  justify-content:center;font-size:1.9rem;margin:0 auto 1.4rem;position:relative}
+.ch{font-family:'Lora',serif;font-size:clamp(1.4rem,3.2vw,2.2rem);font-weight:700;
+  color:#fff;line-height:1.22;max-width:820px;margin:0 auto 1.15rem;position:relative}
+.ch em{font-style:normal;border-bottom:3px solid rgba(255,255,255,.45);padding-bottom:1px}
+.cp{color:rgba(255,255,255,.8);font-size:.95rem;line-height:1.7;max-width:640px;margin:0 auto 2.25rem;position:relative}
+.cbt{display:flex;gap:.9rem;justify-content:center;flex-wrap:wrap;position:relative}
+.cf{margin-top:3rem;padding-top:1.4rem;border-top:1px solid rgba(255,255,255,.18);
+  font-size:.68rem;color:rgba(255,255,255,.42);letter-spacing:.14em;text-transform:uppercase;position:relative}
+
+/* ── RESPONSIVE ──────────────────────── */
+@media(max-width:1100px){.fg8{grid-template-columns:repeat(2,1fr)}.steps{grid-template-columns:repeat(3,1fr);gap:1.5rem}.steps::before{display:none}.an-g{grid-template-columns:1fr}.kbar{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:900px){.hg{grid-template-columns:1fr}.qnc{display:none}.ch2{grid-template-columns:1fr}.t3{grid-template-columns:1fr}.d5{grid-template-columns:repeat(2,1fr)}.ng{grid-template-columns:repeat(2,1fr)}.tacts{grid-template-columns:1fr}.fg4{grid-template-columns:repeat(2,1fr)}.jpg{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.fg8{grid-template-columns:1fr}.d5{grid-template-columns:1fr}.ng{grid-template-columns:1fr}.nr{display:none}section{padding:3.5rem 1rem}.kbar{grid-template-columns:repeat(2,1fr)}}
 </style>
 </head>
 <body>
+<div id="mttip"></div>
 
-<!-- ── NAV ── -->
-<nav>
-  <div class="nav-brand">FCS UNAB · Agenda Estratégica 2025</div>
-  <div class="nav-links">
-    <a href="#" onclick="navTo('inicio')">Inicio</a>
-    <a href="#" onclick="navTo('hallazgos')">Hallazgos</a>
-    <a href="#" onclick="navTo('oportunidades')">Oportunidades</a>
-    <a href="#" onclick="navTo('prioridades')">Prioridades</a>
-    <a href="#" onclick="navTo('journey')">Journey</a>
-    <a href="#" onclick="navTo('hoja-de-ruta')">Hoja de ruta</a>
-    <a href="#" onclick="navTo('decisiones')">Decisiones</a>
-  </div>
+<!-- ─── NAV ─── -->
+<nav id="nav">
+  <a class="nl" href="#hero">
+    <img src="data:image/jpeg;base64,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" alt="UNAB">
+    <div class="nl-t">
+      <div class="t1">Universidad Autónoma de Bucaramanga</div>
+      <div class="t2">Facultad de Ciencias de la Salud</div>
+    </div>
+  </a>
+  <nav class="nr">
+    <a href="#met">Metodología</a>
+    <a href="#analisis">Análisis</a>
+    <a href="#hal">Hallazgos</a>
+    <a href="#frt">Frentes</a>
+    <a href="#mat">Prioridades</a>
+    <a href="#jou">Journey</a>
+    <a href="#hdr">Hoja de ruta</a>
+    <a href="#dec">Decisiones</a>
+  </nav>
 </nav>
 
-<!-- ── HERO ── -->
-<section id="inicio">
-  <div class="container">
-    <div class="hero-grid">
-      <div>
-        <div class="hero-eyebrow">Comité de Facultad · Ciencias de la Salud UNAB</div>
-        <h1 class="hero-title">Agenda estratégica para la <em>excelencia educativa</em> y el journey del estudiante</h1>
-        <p class="hero-sub">Facultad de Ciencias de la Salud UNAB · Hallazgos, oportunidades y prioridades para fortalecer la enseñanza, el aprendizaje personalizado y la experiencia estudiantil.</p>
-        <div class="hero-quote">
-          "La excelencia educativa no depende solo de mejorar clases aisladas; requiere articular docencia, bienestar, tecnología, currículo, práctica, datos y acompañamiento alrededor del journey completo del estudiante."
-        </div>
-        <div class="hero-ctas">
-          <a href="#" onclick="navTo('prioridades')" class="btn btn-primary">↓ Ver prioridades estratégicas</a>
-          <a href="#" onclick="navTo('journey')" class="btn btn-outline">Explorar journey del estudiante</a>
-          <a href="#" onclick="navTo('hoja-de-ruta')" class="btn btn-outline">Revisar hoja de ruta</a>
+<!-- ─── HERO ─── -->
+<section id="hero">
+  <div class="w">
+    <div class="hg">
+      <div class="rv">
+        <div class="hchip">🎓 Comité de Facultad · FCS UNAB 2026</div>
+        <h1 class="hh">Agenda estratégica para la <strong>excelencia educativa</strong> y el journey del estudiante</h1>
+        <p class="hp">Análisis estratégico construido desde los hallazgos del taller participativo de la Facultad, benchmarking nacional e internacional y diagnóstico institucional. Una hoja de ruta para activar una transformación educativa centrada en el estudiante.</p>
+        <div class="hq">"La excelencia educativa no depende de mejorar clases aisladas; requiere articular docencia, bienestar, tecnología, currículo, práctica y acompañamiento alrededor del journey completo del estudiante."</div>
+        <div class="hbtns">
+          <a href="#met" class="btn bo">Explorar metodología ↓</a>
+          <a href="#mat" class="btn bs">Ver matriz estratégica</a>
+          <a href="#dec" class="btn bg">Ir a decisiones →</a>
         </div>
       </div>
-      <div class="hero-metrics">
-        <div class="metric-card m1 reveal reveal-delay-1">
-          <div class="metric-num">64</div>
-          <div class="metric-label">Registros sistematizados del taller de excelencia educativa</div>
-        </div>
-        <div class="metric-card m2 reveal reveal-delay-2">
-          <div class="metric-num">63</div>
-          <div class="metric-label">Votos priorizados por los participantes del taller</div>
-        </div>
-        <div class="metric-card m3 reveal reveal-delay-3">
-          <div class="metric-num">8</div>
-          <div class="metric-label">Frentes estratégicos de oportunidad identificados</div>
-        </div>
+      <div class="qnc rv d2">
+        <div class="qnt">Navegación del documento</div>
+        <a href="#met" class="qi"><div class="qi-ic" style="background:#FFF3E0">🔬</div><div><div class="qi-t1">Metodología del proceso</div><div class="qi-t2">5 etapas: taller → benchmarking</div></div><span class="qi-ar">›</span></a>
+        <a href="#analisis" class="qi"><div class="qi-ic" style="background:#E8F5E9">🧠</div><div><div class="qi-t1">Análisis estratégico</div><div class="qi-t2">Contexto, diagnóstico y lectura</div></div><span class="qi-ar">›</span></a>
+        <a href="#hal" class="qi"><div class="qi-ic" style="background:#E3F2FD">📊</div><div><div class="qi-t1">Hallazgos sistematizados</div><div class="qi-t2">64 registros · 63 votos · 5 categorías</div></div><span class="qi-ar">›</span></a>
+        <a href="#frt" class="qi"><div class="qi-ic" style="background:#F3E5F5">🚀</div><div><div class="qi-t1">8 Frentes estratégicos</div><div class="qi-t2">Expandibles con indicadores</div></div><span class="qi-ar">›</span></a>
+        <a href="#mat" class="qi"><div class="qi-ic" style="background:#FCE4EC">🎯</div><div><div class="qi-t1">Matriz de prioridades</div><div class="qi-t2">Impacto vs factibilidad · Arrastrable</div></div><span class="qi-ar">›</span></a>
+        <a href="#jou" class="qi"><div class="qi-ic" style="background:#E0F7FA">🗺️</div><div><div class="qi-t1">Journey del estudiante</div><div class="qi-t2">8 etapas interactivas</div></div><span class="qi-ar">›</span></a>
+        <a href="#hdr" class="qi"><div class="qi-ic" style="background:#FFF8E1">📅</div><div><div class="qi-t1">Hoja de ruta</div><div class="qi-t2">3 fases: 0–6 · 6–18 · 18–36 m</div></div><span class="qi-ar">›</span></a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── MENSAJE EJECUTIVO ── -->
-<section id="mensaje">
-  <div class="container">
-    <div class="section-label">Mensaje ejecutivo para el Comité</div>
-    <h2 class="section-title">Una oportunidad de transformación coordinada</h2>
-    <div class="message-block reveal">
-      El ejercicio participativo permitió reconocer necesidades, tensiones y posibilidades de mejora relacionadas con la enseñanza, el aprendizaje, la evaluación, el acompañamiento, la permanencia, las prácticas formativas, el bienestar y la experiencia integral del estudiante. <strong>La principal oportunidad para la Facultad consiste en pasar de necesidades dispersas a una agenda coordinada de excelencia educativa</strong>, con gobernanza, datos, pilotos, indicadores y mejora continua.
+<!-- ─── KPI BAR ─── -->
+<div id="kpis">
+  <div class="w">
+    <div class="kbar">
+      <div class="kitem"><div class="knum">64</div><div class="ktxt">Registros<br>sistematizados</div></div>
+      <div class="kitem"><div class="knum">63</div><div class="ktxt">Votos de<br>priorización</div></div>
+      <div class="kitem"><div class="knum">8</div><div class="ktxt">Frentes<br>estratégicos</div></div>
+      <div class="kitem"><div class="knum">5</div><div class="ktxt">Categorías<br>temáticas</div></div>
+      <div class="kitem"><div class="knum">3</div><div class="ktxt">Fases de<br>implementación</div></div>
     </div>
-    <div class="transform-grid">
-      <div class="transform-card reveal reveal-delay-1">
-        <div class="transform-from">Necesidades dispersas</div>
-        <div class="transform-arrow">↓</div>
-        <div class="transform-to">Frentes estratégicos</div>
+  </div>
+</div>
+
+<!-- ─── METODOLOGÍA ─── -->
+<section id="met">
+  <div class="w">
+    <div class="tag">Proceso · Origen del análisis</div>
+    <h2 class="h1">Cómo se construyó este análisis estratégico</h2>
+    <p class="lead">Un proceso de cinco etapas que combinó participación colectiva estructurada, análisis institucional y benchmarking nacional e internacional para producir una agenda estratégica accionable.</p>
+    <div class="met-body rv" style="margin-top:1.75rem">
+      <p>En el marco del <strong>Comité de Facultad de Ciencias de la Salud de la UNAB</strong>, se desarrolló un taller de clarificación de oportunidades con el objetivo de identificar, desde adentro, las necesidades más relevantes para el fortalecimiento de la enseñanza, el aprendizaje y la experiencia del estudiante. El taller fue diseñado como un espacio de participación estructurada, sin respuestas predeterminadas.</p>
+      <p>A partir de la <strong>generación libre de ideas plasmadas en post-its organizados por categorías temáticas</strong>, los participantes identificaron patrones de necesidad, problemáticas recurrentes y apuestas de transformación. Estas ideas fueron sometidas a un proceso de <strong>votación priorizada</strong> (urgente · importante · futuro) que permitió establecer un espacio de convergencia: distinguir las necesidades de atención inmediata de las apuestas de mediano y largo plazo.</p>
+      <p>Los resultados del taller se complementaron con una <strong>revisión profunda de la información disponible de la Facultad</strong> y un proceso de <strong>benchmarking nacional e internacional</strong> con universidades que han enfrentado retos similares y han desarrollado modelos de respuesta basados en analítica educativa, personalización del aprendizaje y gestión del journey estudiantil. El cruce de estas tres fuentes produjo los 8 frentes estratégicos, la matriz de prioridades y la hoja de ruta que se presentan a continuación.</p>
+    </div>
+    <div class="steps rv d1">
+      <div class="step"><div class="s-node">💡<div class="s-n">1</div></div><div class="s-lbl">Taller participativo</div><div class="s-dsc">Generación de ideas en Comité de Facultad con post-its</div></div>
+      <div class="step"><div class="s-node">🗳️<div class="s-n">2</div></div><div class="s-lbl">Votación y convergencia</div><div class="s-dsc">Priorización: urgente · importante · futuro (63 votos)</div></div>
+      <div class="step"><div class="s-node">📋<div class="s-n">3</div></div><div class="s-lbl">Sistematización</div><div class="s-dsc">Categorización de 64 registros en 5 dimensiones</div></div>
+      <div class="step"><div class="s-node">🔍<div class="s-n">4</div></div><div class="s-lbl">Análisis institucional</div><div class="s-dsc">Revisión profunda de información de la Facultad</div></div>
+      <div class="step"><div class="s-node">🌐<div class="s-n">5</div></div><div class="s-lbl">Benchmarking</div><div class="s-dsc">Comparación con universidades nacionales e internacionales</div></div>
+    </div>
+    <div class="met-out rv d2">
+      <div class="mo-ic">📌</div>
+      <div><div class="mo-t1">Resultado: agenda estratégica fundamentada en evidencia participativa</div><div class="mo-t2">El cruce entre las necesidades priorizadas por el taller, el contexto institucional de la Facultad y las mejores prácticas nacionales e internacionales permitió definir 8 frentes estratégicos, una matriz de prioridades y una hoja de ruta en tres fases que el Comité puede aprobar y activar.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── ANÁLISIS ESTRATÉGICO ─── -->
+<section id="analisis">
+  <div class="w">
+    <div class="tag">Análisis estratégico profundo</div>
+    <h2 class="h1">Diagnóstico institucional y lectura de oportunidades</h2>
+    <div class="an-g rv">
+      <div class="an-main">
+        <p>El análisis estratégico revela que la <strong>Facultad de Ciencias de la Salud de la UNAB se encuentra en un punto de inflexión</strong>: cuenta con las capacidades institucionales, el talento docente y la base estudiantil para avanzar hacia un modelo de excelencia educativa, pero enfrenta una dispersión de iniciativas que reduce su impacto acumulado.</p>
+        <p>El benchmarking nacional e internacional confirma que las universidades de salud de alto desempeño — como la Universidad de los Andes, la Universidad de Chile, la Universidad de Navarra y la Universidad de McMaster — <em>no se distinguen por tener mejores recursos, sino por la calidad de su gobernanza educativa y la integración de sus sistemas de seguimiento del journey estudiantil.</em> La diferencia está en el modelo, no en el presupuesto.</p>
+        <p>Los 64 registros sistematizados del taller revelan una <strong>concentración crítica de necesidades en tres ejes</strong>: (1) la actualización pedagógica del cuerpo docente, especialmente en evaluación formativa e IA educativa; (2) la ausencia de sistemas de datos integrados que permitan alertas tempranas y personalización del aprendizaje; y (3) la fragmentación de la experiencia del estudiante a través de las etapas de su journey formativo.</p>
+        <p>La distribución equilibrada de los 63 votos entre urgencia, importancia y futuro indica que los participantes del taller tienen <strong>conciencia estratégica de múltiples horizontes</strong>: hay necesidades que requieren intervención inmediata, oportunidades de fortalecimiento sostenido y apuestas de transformación progresiva. Esta madurez de lectura colectiva es un activo institucional que debe capitalizarse.</p>
+        <p>La <strong>recomendación estratégica central</strong> de este análisis es pasar de necesidades dispersas a una agenda coordinada de excelencia educativa, con gobernanza clara, datos, pilotos verificables, indicadores y mejora continua. La Facultad ya tiene las condiciones; el reto es la articulación.</p>
       </div>
-      <div class="transform-card reveal reveal-delay-2">
-        <div class="transform-from">Percepciones del taller</div>
-        <div class="transform-arrow">↓</div>
-        <div class="transform-to">Priorización</div>
-      </div>
-      <div class="transform-card reveal reveal-delay-3">
-        <div class="transform-from">Capacidades existentes</div>
-        <div class="transform-arrow">↓</div>
-        <div class="transform-to">Modelo de excelencia</div>
-      </div>
-      <div class="transform-card reveal reveal-delay-4">
-        <div class="transform-from">Acciones aisladas</div>
-        <div class="transform-arrow">↓</div>
-        <div class="transform-to">Journey integrado</div>
+      <div class="an-side">
+        <div class="an-card"><div class="an-tag">Fortaleza institucional</div><h4>Base docente y programas establecidos</h4><p>La Facultad cuenta con cuerpo docente comprometido y programas con trayectoria. La transformación se construye sobre estas capacidades, no desde cero.</p></div>
+        <div class="an-card"><div class="an-tag">Brecha crítica</div><h4>Fragmentación del journey estudiantil</h4><p>Las etapas del proceso formativo no están integradas. Cada programa gestiona su experiencia de forma independiente, sin datos longitudinales del estudiante.</p></div>
+        <div class="an-card"><div class="an-tag">Oportunidad estratégica</div><h4>Ventana de transformación pedagógica</h4><p>La IA educativa, la evaluación formativa y la analítica del aprendizaje ofrecen herramientas de alto impacto y bajo costo de adopción inicial.</p></div>
+        <div class="an-card"><div class="an-tag">Riesgo a gestionar</div><h4>Inercia ante el cambio pedagógico</h4><p>Sin gobernanza explícita y pilotos visibles, las iniciativas de mejora pierden impulso. La agenda requiere un custodio institucional activo.</p></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── HALLAZGOS ── -->
-<section id="hallazgos">
-  <div class="container">
-    <div class="section-label">Datos del taller</div>
-    <h2 class="section-title">Hallazgos sistematizados</h2>
-    <p class="section-sub">Un total de 64 registros y 63 votos priorizados configuran el mapa de necesidades y apuestas estratégicas de la Facultad.</p>
-
-    <div class="charts-grid reveal">
-      <div class="chart-card">
-        <h4>Post-its por categoría temática</h4>
-        <div class="chart-canvas-wrap"><canvas id="chartPostits"></canvas></div>
-      </div>
-      <div class="chart-card">
-        <h4>Votos por tipo y categoría</h4>
-        <div class="chart-canvas-wrap"><canvas id="chartVotos"></canvas></div>
-      </div>
+<!-- ─── HALLAZGOS ─── -->
+<section id="hal">
+  <div class="w">
+    <div class="tag">Datos del taller participativo</div>
+    <h2 class="h1">Dashboard de hallazgos sistematizados</h2>
+    <p class="lead">64 registros y 63 votos constituyen el mapa de necesidades y apuestas estratégicas identificadas colectivamente por la Facultad.</p>
+    <div class="ch2 rv">
+      <div class="cc"><h4>Registros por categoría temática (post-its)</h4><div class="chw"><canvas id="cA"></canvas></div></div>
+      <div class="cc"><h4>Votos por tipo de prioridad y categoría</h4><div class="chw"><canvas id="cB"></canvas></div></div>
     </div>
-
-    <div class="charts-grid reveal">
-      <div class="chart-card">
-        <h4>Distribución global de votos (21 urgentes · 21 importantes · 21 futuro)</h4>
-        <div class="donut-wrap">
-          <div style="position:relative;width:200px;height:200px;flex-shrink:0;"><canvas id="chartDonut"></canvas></div>
-          <div class="donut-legend">
-            <div class="legend-item"><div class="legend-dot" style="background:#c0392b;"></div><strong>21 Urgentes</strong> – Intervención prioritaria</div>
-            <div class="legend-item"><div class="legend-dot" style="background:#2980b9;"></div><strong>21 Importantes</strong> – Fortalecimiento sostenido</div>
-            <div class="legend-item"><div class="legend-dot" style="background:#27ae60;"></div><strong>21 Futuro</strong> – Apuestas de transformación</div>
+    <div class="ch2 rv">
+      <div class="cc"><h4>Distribución global de priorización (63 votos)</h4>
+        <div class="drow">
+          <div class="dwp"><canvas id="cC"></canvas></div>
+          <div>
+            <div class="dl"><div class="dld" style="background:#C0392B"></div><strong>21 votos Urgentes</strong> — Intervención prioritaria inmediata</div>
+            <div class="dl"><div class="dld" style="background:#1F6BAA"></div><strong>21 votos Importantes</strong> — Fortalecimiento sostenido</div>
+            <div class="dl"><div class="dld" style="background:#1E8449"></div><strong>21 votos Futuro</strong> — Apuestas de transformación</div>
+            <p style="font-size:.78rem;color:var(--k4);margin-top:.75rem;line-height:1.5">La distribución 33/33/33 evidencia un colectivo con conciencia de múltiples horizontes de actuación simultánea.</p>
           </div>
         </div>
       </div>
-      <div class="chart-card" style="display:flex;flex-direction:column;justify-content:center;">
-        <div class="finding-cards">
-          <div class="finding-card fc1"><div class="finding-icon">📊</div><h5>Mayor volumen</h5><p>Estrategias de enseñanza y aprendizaje concentran el mayor número de necesidades (21 registros).</p></div>
-          <div class="finding-card fc2"><div class="finding-icon">🤖</div><h5>Foco urgente individual</h5><p>Formación docente en aplicaciones de IA es el punto más votado con carácter urgente.</p></div>
-          <div class="finding-card fc3"><div class="finding-icon">🔗</div><h5>Foco crítico transversal</h5><p>Analítica, alertas, evaluación, bienestar y comunicación cruzan todas las categorías.</p></div>
-          <div class="finding-card fc4"><div class="finding-icon">🏥</div><h5>Apuesta de futuro</h5><p>Hospital virtual, simulación, recursos digitales y modernización de infraestructura como visión transformadora.</p></div>
+      <div class="cc" style="display:flex;flex-direction:column;justify-content:center">
+        <div class="fg4">
+          <div class="fg"><div class="fg-ic">📊</div><div class="fg-lb">Mayor volumen</div><div class="fg-tx">Enseñanza y aprendizaje concentra 21 registros (33% del total), el foco más amplio de necesidades.</div></div>
+          <div class="fg"><div class="fg-ic">🤖</div><div class="fg-lb">Señal más urgente</div><div class="fg-tx">Formación docente en IA educativa es el nodo con mayor concentración de votos urgentes del taller.</div></div>
+          <div class="fg"><div class="fg-ic">🔗</div><div class="fg-lb">Eje transversal</div><div class="fg-tx">Analítica, alertas, evaluación y bienestar cruzan todas las categorías como necesidades sistémicas.</div></div>
+          <div class="fg"><div class="fg-ic">🏥</div><div class="fg-lb">Apuesta de futuro</div><div class="fg-tx">Hospital virtual, simulación avanzada y modernización curricular definen la visión transformadora.</div></div>
         </div>
       </div>
     </div>
+    <div class="insight-bar rv">"La única categoría sin votos de futuro es Percepción estudiantil — lo que indica que los participantes la ven como una necesidad de atención inmediata, no como aspiración de largo plazo. Este dato orienta el orden de intervención."</div>
+  </div>
+</section>
 
-    <div class="interpretation-block reveal">
-      "La distribución equilibrada entre urgencia, importancia y futuro evidencia que la Facultad no solo identifica necesidades inmediatas, sino que también reconoce apuestas de transformación progresiva."
+<!-- ─── TENSIONES ─── -->
+<section id="lec">
+  <div class="w">
+    <div class="tag">Lectura estratégica de tensiones</div>
+    <h2 class="h1">Tres tensiones productivas que definen la agenda</h2>
+    <p class="lead">El análisis identifica tres tensiones estructurales que, si se gestionan deliberadamente, se convierten en los principales vectores de transformación institucional.</p>
+    <div class="t3">
+      <div class="tc rv d1"><div class="tc-ic">🎓</div><h3>Tensión pedagógica</h3><p>Existe una brecha entre las metodologías de enseñanza actuales y las capacidades pedagógicas requeridas para el siglo XXI. La Facultad necesita consolidar una cultura común en evaluación formativa, IA educativa responsable, retroalimentación efectiva, acompañamiento activo y diseño de experiencias de aprendizaje.</p></div>
+      <div class="tc rv d2"><div class="tc-ic">📡</div><h3>Tensión informacional</h3><p>Las decisiones académicas se toman con información incompleta. La Facultad carece de sistemas integrados de datos, alertas tempranas y seguimiento longitudinal del journey estudiantil. Esta brecha informacional genera intervenciones reactivas en lugar de preventivas.</p></div>
+      <div class="tc rv d3"><div class="tc-ic">🧭</div><h3>Tensión experiencial</h3><p>El estudiante percibe su formación como una suma de experiencias aisladas. La integración entre docencia, bienestar, prácticas, comunicación institucional y acompañamiento requiere ser deliberada, no accidental. El journey del estudiante debe ser gestionado, no solo vivido.</p></div>
+    </div>
+    <div class="cq rv">"El reto estratégico no es crear más iniciativas aisladas — es articular las capacidades existentes en un sistema de excelencia educativa genuinamente centrado en el estudiante. La gobernanza es la palanca de transformación."</div>
+  </div>
+</section>
+
+<!-- ─── FRENTES ─── -->
+<section id="frt">
+  <div class="w">
+    <div class="tag">Frentes estratégicos · Benchmarking aplicado</div>
+    <h2 class="h1">Ocho frentes para la transformación educativa</h2>
+    <p class="lead">Cada frente está fundamentado en el análisis del taller, el contexto institucional y las prácticas de universidades de referencia nacional e internacional. Haz clic para expandir el diagnóstico, el impacto esperado y los indicadores de seguimiento.</p>
+    <div class="fg8" id="fg8">
+      <div class="fc c1"><div class="fh"><div class="ft">Frente 01 · Estratégico</div><span class="fi">🗺️</span><div class="fn">Educación personalizada basada en trayectorias estudiantiles</div><div class="fp">⬤ Prioridad media · 6–18 m</div></div><div class="fb"><div class="fd"><strong>Diagnóstico estratégico</strong>La Facultad aplica una ruta formativa homogénea que no diferencia entre perfiles de ingreso, riesgos académicos ni necesidades de acompañamiento. Las universidades de referencia (UNIANDES, McMaster, Navarra) han demostrado que la personalización de trayectorias mejora la permanencia hasta un 18% y el desempeño académico en cursos críticos.</div><div class="fd"><strong>Impacto esperado</strong>Mejora desempeño académico, permanencia, satisfacción y claridad del camino formativo. Reduce el rezago acumulado y las tasas de deserción voluntaria.</div><div class="fd"><strong>Referente benchmarking</strong>Universidad de los Andes — Programa de Acompañamiento Estudiantil con caracterización al ingreso y rutas diferenciadas. McMaster — Problem-Based Learning con adaptación por perfil.</div><div class="fd"><strong>Horizonte de implementación</strong><span style="color:#1F6BAA;font-weight:700">6 a 18 meses</span></div><div class="fd"><strong>Indicadores de seguimiento</strong>% estudiantes caracterizados al ingreso · Rutas de apoyo activadas · Tasa de aprobación en cursos críticos · Participación en tutorías · NPS estudiantil.</div></div><button class="ftg" onclick="togF(this)">Ver análisis detallado <span class="ta">▾</span></button></div>
+
+      <div class="fc c2"><div class="fh"><div class="ft">Frente 02 · Habilitador crítico</div><span class="fi">📊</span><div class="fn">Analítica del aprendizaje, alertas tempranas y trazabilidad</div><div class="fp">● Prioridad alta · 0–12 m</div></div><div class="fb"><div class="fd"><strong>Diagnóstico estratégico</strong>La Facultad carece de un sistema integrado de seguimiento académico que conecte asistencia, calificaciones, uso del LMS, tutorías, bienestar y prácticas. Sin datos longitudinales, la intervención llega tarde. Este frente es el habilitador de todos los demás: sin datos, no hay personalización ni alertas efectivas.</div><div class="fd"><strong>Impacto esperado</strong>Intervención antes del rezago acumulado. Mejora la toma de decisiones institucionales y la capacidad predictiva sobre situaciones de riesgo académico o psicosocial.</div><div class="fd"><strong>Referente benchmarking</strong>Universidad Nacional de Colombia — Sistema de alertas tempranas con integración LMS. Georgia Tech — Learning Analytics Dashboard con reducción del 30% en deserción de primer año.</div><div class="fd"><strong>Horizonte de implementación</strong><span style="color:#C0392B;font-weight:700">0 a 12 meses</span></div><div class="fd"><strong>Indicadores de seguimiento</strong>% alertas atendidas · Tiempo de respuesta institucional · Estudiantes con datos integrados · Permanencia 1.° a 2.° año · Cobertura del sistema de seguimiento.</div></div><button class="ftg" onclick="togF(this)">Ver análisis detallado <span class="ta">▾</span></button></div>
+
+      <div class="fc c3"><div class="fh"><div class="ft">Frente 03 · Alta prioridad</div><span class="fi">✅</span><div class="fn">Evaluación formativa, retroalimentación y resultados de aprendizaje</div><div class="fp">● Prioridad alta · 0–12 m</div></div><div class="fb"><div class="fd"><strong>Diagnóstico estratégico</strong>La evaluación en la Facultad opera predominantemente como instrumento de calificación, no como herramienta de aprendizaje. La retroalimentación es tardía y asistemática. El benchmarking muestra que la evaluación formativa con rúbricas claras y ciclos de feedback estructurado es el factor pedagógico con mayor correlación con resultados de aprendizaje de calidad.</div><div class="fd"><strong>Impacto esperado</strong>Aumenta la percepción de justicia académica, reduce la reprobación, fortalece los procesos de acreditación y genera evidencias verificables de logro de competencias.</div><div class="fd"><strong>Referente benchmarking</strong>Universidad de Navarra — Modelo de evaluación continua en Ciencias de la Salud. Universidad de Chile Medicina — Portafolios de competencias clínicas con rúbricas estandarizadas.</div><div class="fd"><strong>Horizonte de implementación</strong><span style="color:#C0392B;font-weight:700">0 a 12 meses</span></div><div class="fd"><strong>Indicadores de seguimiento</strong>% cursos con rúbricas implementadas · Tiempo promedio de retroalimentación · Satisfacción con feedback · Logro de resultados de aprendizaje por programa.</div></div><button class="ftg" onclick="togF(this)">Ver análisis detallado <span class="ta">▾</span></button></div>
+
+      <div class="fc c4"><div class="fh"><div class="ft">Frente 04 · Alta prioridad</div><span class="fi">🤖</span><div class="fn">Ruta docente en IA educativa, pedagogía activa y acompañamiento</div><div class="fp">● Prioridad alta · 0–12 m</div></div><div class="fb"><div class="fd"><strong>Diagnóstico estratégico</strong>El taller identificó la formación docente en IA educativa como la necesidad más urgente. Los docentes enfrentan un entorno pedagógico cambiante sin las herramientas conceptuales ni prácticas para integrarlo. La agenda requiere formar docentes como diseñadores de experiencias de aprendizaje, no solo transmisores de contenido.</div><div class="fd"><strong>Impacto esperado</strong>Mejora la consistencia pedagógica entre programas, fomenta la innovación docente con IA responsable, ABP y simulación, y mejora directamente la experiencia del estudiante en el aula.</div><div class="fd"><strong>Referente benchmarking</strong>EAFIT — Programa de transformación docente con IA y pedagogía activa. Harvard Medical School — Faculty Development Program en Active Learning.</div><div class="fd"><strong>Horizonte de implementación</strong><span style="color:#C0392B;font-weight:700">0 a 12 meses</span></div><div class="fd"><strong>Indicadores de seguimiento</strong>% docentes formados · Asignaturas rediseñadas con metodologías activas · Productos pedagógicos generados · Evidencias verificables de uso responsable de IA.</div></div><button class="ftg" onclick="togF(this)">Ver análisis detallado <span class="ta">▾</span></button></div>
+
+      <div class="fc c5"><div class="fh"><div class="ft">Frente 05 · Alta prioridad</div><span class="fi">🌿</span><div class="fn">Acompañamiento integral, bienestar y permanencia estudiantil</div><div class="fp">● Prioridad alta · 0–12 m</div></div><div class="fb"><div class="fd"><strong>Diagnóstico estratégico</strong>La Percepción estudiantil fue la única categoría sin votos de futuro, lo que indica que los participantes la ven como necesidad inmediata, no como aspiración. La atención al bienestar opera de forma reactiva. Las instituciones de referencia demuestran que la articulación entre tutoría académica, mentoría docente y bienestar psicológico mejora la permanencia y el sentido de pertenencia.</div><div class="fd"><strong>Impacto esperado</strong>Mejora permanencia, motivación, bienestar psicológico, sentido de pertenencia y satisfacción institucional. Reduce el abandono silencioso.</div><div class="fd"><strong>Referente benchmarking</strong>Universidad de los Andes — Programa integral de bienestar estudiantil articulado con alertas académicas. Universidad Autónoma de Madrid — Modelo de tutoría integrada.</div><div class="fd"><strong>Horizonte de implementación</strong><span style="color:#C0392B;font-weight:700">0 a 12 meses</span></div><div class="fd"><strong>Indicadores de seguimiento</strong>Uso activo de tutorías · Derivaciones efectivas · Alertas psicosociales atendidas · Tasa de permanencia semestral · Satisfacción con bienestar.</div></div><button class="ftg" onclick="togF(this)">Ver análisis detallado <span class="ta">▾</span></button></div>
+
+      <div class="fc c6"><div class="fh"><div class="ft">Frente 06 · Estratégico</div><span class="fi">🏥</span><div class="fn">Simulación, práctica formativa y aprendizaje experiencial</div><div class="fp">⬤ Prioridad media · 6–18 m</div></div><div class="fb"><div class="fd"><strong>Diagnóstico estratégico</strong>La práctica formativa es el espacio de mayor exposición al aprendizaje clínico, pero también el de mayor variabilidad en calidad. La integración de simulación, debriefing estructurado y evaluación por competencias en práctica es una de las tendencias más robustas del benchmarking en salud.</div><div class="fd"><strong>Impacto esperado</strong>Mejora la seguridad del paciente, la confianza del estudiante, el desempeño en rotaciones clínicas y la calidad de la formación práctica percibida por los aliados institucionales.</div><div class="fd"><strong>Referente benchmarking</strong>Universidad del Rosario — Centro de simulación integrado con currículo. Harvard Medical School — Simulation-Based Medical Education con debriefing estandardizado.</div><div class="fd"><strong>Horizonte de implementación</strong><span style="color:#1F6BAA;font-weight:700">6 a 18 meses</span></div><div class="fd"><strong>Indicadores de seguimiento</strong>Horas de simulación por estudiante · Escenarios con debriefing estructurado · Satisfacción con prácticas · Desempeño en evaluaciones de rotación.</div></div><button class="ftg" onclick="togF(this)">Ver análisis detallado <span class="ta">▾</span></button></div>
+
+      <div class="fc c7"><div class="fh"><div class="ft">Frente 07 · Visión de futuro</div><span class="fi">🔬</span><div class="fn">Currículo integrado, interdisciplinariedad e investigación formativa</div><div class="fp">○ Prioridad progresiva · 1–3 a</div></div><div class="fb"><div class="fd"><strong>Diagnóstico estratégico</strong>La integración curricular entre ciencias básicas, clínica, comunidad e investigación es la apuesta de más largo aliento. Requiere rediseños curriculares, acuerdos interfacultades y gobernanza académica. El benchmarking muestra que las facultades de salud más reconocidas tienen este eje como columna vertebral de su identidad educativa.</div><div class="fd"><strong>Impacto esperado</strong>Fortalece la pertinencia social, la colaboración interprofesional, el pensamiento crítico y la identidad profesional del egresado. Es la base para la certificación internacional.</div><div class="fd"><strong>Referente benchmarking</strong>McMaster University — Integración pionera de ciencias básicas y clínicas en aprendizaje basado en problemas. Universidad de Navarra — Modelo integrado Medicina-Investigación desde primer año.</div><div class="fd"><strong>Horizonte de implementación</strong><span style="color:#5D6D7E;font-weight:700">1 a 3 años</span></div><div class="fd"><strong>Indicadores de seguimiento</strong>Experiencias interprofesionales activas · Estudiantes en investigación formativa · Cursos integrados diseñados · Satisfacción de aliados clínicos con el perfil de egresado.</div></div><button class="ftg" onclick="togF(this)">Ver análisis detallado <span class="ta">▾</span></button></div>
+
+      <div class="fc c8"><div class="fh"><div class="ft">Frente 08 · Acción inmediata</div><span class="fi">💬</span><div class="fn">Experiencia institucional, comunicación efectiva y plataformas articuladas</div><div class="fp">● Prioridad alta · 0–6 m</div></div><div class="fb"><div class="fd"><strong>Diagnóstico estratégico</strong>La comunicación institucional genera fricción en el journey del estudiante: canales dispersos, tiempos de respuesta indefinidos, procesos de práctica opacos y ausencia de un punto único de orientación. Es el frente con mayor impacto percibido a corto plazo y menor costo de implementación inicial.</div><div class="fd"><strong>Impacto esperado</strong>Reduce la fricción institucional, aumenta la confianza del estudiante, mejora la satisfacción general y libera capacidad docente y administrativa de atención reactiva.</div><div class="fd"><strong>Referente benchmarking</strong>EAFIT — Chatbot de orientación estudiantil con reducción del 40% en consultas operativas. Tec de Monterrey — Plataforma única de servicios estudiantiles integrada.</div><div class="fd"><strong>Horizonte de implementación</strong><span style="color:#C0392B;font-weight:700">0 a 6 meses</span></div><div class="fd"><strong>Indicadores de seguimiento</strong>Tiempo promedio de respuesta institucional · Satisfacción con comunicación · Tasa de resolución en primer contacto · NPS estudiantil global.</div></div><button class="ftg" onclick="togF(this)">Ver análisis detallado <span class="ta">▾</span></button></div>
     </div>
   </div>
 </section>
 
-<!-- ── LECTURA ESTRATÉGICA ── -->
-<section id="lectura">
-  <div class="container">
-    <div class="section-label">Lectura estratégica</div>
-    <h2 class="section-title">Tres tensiones productivas para la evolución institucional</h2>
-    <div class="tensions-grid">
-      <div class="tension-card reveal reveal-delay-1">
-        <div class="tension-icon">🎓</div>
-        <h3>Tensión pedagógica</h3>
-        <p>La Facultad cuenta con fortalezas formativas, pero requiere consolidar una cultura común en evaluación formativa, IA educativa responsable, retroalimentación, acompañamiento y diseño activo del aprendizaje.</p>
+<!-- ─── MATRIZ ─── -->
+<section id="mat">
+  <div class="w">
+    <div class="tag">Priorización estratégica</div>
+    <h2 class="h1">Matriz de impacto vs. factibilidad</h2>
+    <p class="lead">Posicionamiento estratégico de los 8 frentes según su impacto esperado sobre el aprendizaje y su factibilidad de implementación. <strong>Arrastra cada burbuja</strong> para ajustar la posición según la lectura del Comité.</p>
+    <div class="mwrap rv">
+      <div class="mhint">💡 Las burbujas son arrastrables — reposiciona según tu lectura institucional</div>
+      <svg id="msvg" viewBox="0 0 740 460" xmlns="http://www.w3.org/2000/svg">
+        <!-- Quadrant backgrounds -->
+        <rect x="70" y="25" width="300" height="205" fill="#FFF5F5" rx="6" opacity=".7"/>
+        <rect x="370" y="25" width="335" height="205" fill="#F0FFF4" rx="6" opacity=".7"/>
+        <rect x="70" y="230" width="300" height="210" fill="#FFFBF0" rx="6" opacity=".7"/>
+        <rect x="370" y="230" width="335" height="210" fill="#F0F4FF" rx="6" opacity=".7"/>
+        <!-- Quadrant labels -->
+        <text x="220" y="52" text-anchor="middle" font-size="9.5" fill="#C0392B" font-weight="700" font-family="Outfit,sans-serif" opacity=".85">ALTO IMPACTO · BAJA FACTIBILIDAD</text>
+        <text x="537" y="52" text-anchor="middle" font-size="9.5" fill="#1E8449" font-weight="700" font-family="Outfit,sans-serif" opacity=".85">ALTO IMPACTO · ALTA FACTIBILIDAD ★</text>
+        <text x="220" y="248" text-anchor="middle" font-size="9.5" fill="#B7860A" font-weight="700" font-family="Outfit,sans-serif" opacity=".85">BAJO IMPACTO · BAJA FACTIBILIDAD</text>
+        <text x="537" y="248" text-anchor="middle" font-size="9.5" fill="#1F6BAA" font-weight="700" font-family="Outfit,sans-serif" opacity=".85">BAJO IMPACTO · ALTA FACTIBILIDAD</text>
+        <!-- Axes -->
+        <line x1="370" y1="25" x2="370" y2="440" stroke="#B0BEC5" stroke-width="1.5" stroke-dasharray="5,3"/>
+        <line x1="70" y1="230" x2="705" y2="230" stroke="#B0BEC5" stroke-width="1.5" stroke-dasharray="5,3"/>
+        <!-- Axis arrows and labels -->
+        <text x="387" y="456" font-size="11" fill="#607D8B" font-family="Outfit,sans-serif" font-weight="600">Factibilidad de implementación →</text>
+        <text x="12" y="232" font-size="11" fill="#607D8B" font-family="Outfit,sans-serif" font-weight="600" transform="rotate(-90,12,232)">Impacto en aprendizaje →</text>
+        <!-- Scale ticks -->
+        <text x="70" y="444" font-size="9" fill="#90A4AE" font-family="Outfit,sans-serif" text-anchor="middle">Baja</text>
+        <text x="370" y="444" font-size="9" fill="#90A4AE" font-family="Outfit,sans-serif" text-anchor="middle">Media</text>
+        <text x="670" y="444" font-size="9" fill="#90A4AE" font-family="Outfit,sans-serif" text-anchor="middle">Alta</text>
+        <text x="60" y="440" font-size="9" fill="#90A4AE" font-family="Outfit,sans-serif" text-anchor="middle">Bajo</text>
+        <text x="60" y="232" font-size="9" fill="#90A4AE" font-family="Outfit,sans-serif" text-anchor="middle">Medio</text>
+        <text x="60" y="32" font-size="9" fill="#90A4AE" font-family="Outfit,sans-serif" text-anchor="middle">Alto</text>
+      </svg>
+      <div class="mleg">
+        <div class="ml"><div class="mld" style="background:#C0392B"></div>Prioridad alta (0–12 meses)</div>
+        <div class="ml"><div class="mld" style="background:#1F6BAA"></div>Prioridad media (6–18 meses)</div>
+        <div class="ml"><div class="mld" style="background:#5D6D7E"></div>Prioridad progresiva (1–3 años)</div>
       </div>
-      <div class="tension-card reveal reveal-delay-2">
-        <div class="tension-icon">📡</div>
-        <h3>Tensión informacional</h3>
-        <p>Existe una necesidad explícita de sistemas de recolección de datos, plataformas articuladas, seguimiento en tiempo real y alertas tempranas para tomar decisiones preventivas sobre el journey del estudiante.</p>
-      </div>
-      <div class="tension-card reveal reveal-delay-3">
-        <div class="tension-icon">🧭</div>
-        <h3>Tensión experiencial</h3>
-        <p>El estudiante necesita una experiencia más integrada, con comunicación clara, bienestar, prácticas acompañadas, rutas diferenciadas de aprendizaje y respuestas institucionales oportunas.</p>
-      </div>
-    </div>
-    <div class="closing-quote reveal">
-      "El reto estratégico no es crear iniciativas aisladas, sino articular capacidades existentes en un sistema de excelencia educativa centrado en el estudiante."
-    </div>
-  </div>
-</section>
-
-<!-- ── OCHO FRENTES ── -->
-<section id="oportunidades">
-  <div class="container">
-    <div class="section-label">Frentes estratégicos de oportunidad</div>
-    <h2 class="section-title">Ocho frentes para la transformación educativa</h2>
-    <p class="section-sub">Haz clic en cada frente para explorar diagnóstico, impacto esperado, horizonte e indicadores sugeridos.</p>
-
-    <div class="frentes-grid" id="frentesGrid">
-
-      <div class="frente-card f1" data-idx="0">
-        <div class="frente-header">
-          <div class="frente-num">FRENTE 01</div>
-          <div class="frente-icon">🗺️</div>
-          <div class="frente-title">Educación personalizada basada en trayectorias estudiantiles</div>
-          <div class="frente-badge badge-media">⬤ Prioridad media · 6–18 meses</div>
-        </div>
-        <div class="frente-body">
-          <div class="frente-detail"><strong>Idea clave</strong>Pasar de una ruta homogénea a trayectorias acompañadas según perfil de ingreso, riesgos, necesidades académicas y apoyos diferenciados.</div>
-          <div class="frente-detail"><strong>Impacto esperado</strong>Mejora desempeño académico, permanencia, satisfacción y claridad del camino formativo.</div>
-          <div class="frente-detail"><strong>Horizonte</strong><span class="h1">6 a 18 meses</span></div>
-          <div class="frente-detail"><strong>Indicadores sugeridos</strong>% estudiantes caracterizados; rutas de apoyo activadas; tasa de aprobación en cursos críticos; participación en tutorías.</div>
-        </div>
-        <button class="frente-toggle" onclick="toggleFrente(this)">Expandir detalles <span class="toggle-icon">▾</span></button>
-      </div>
-
-      <div class="frente-card f2" data-idx="1">
-        <div class="frente-header">
-          <div class="frente-num">FRENTE 02</div>
-          <div class="frente-icon">📊</div>
-          <div class="frente-title">Analítica del aprendizaje, alertas tempranas y trazabilidad del journey</div>
-          <div class="frente-badge badge-alta">● Prioridad alta · 0–12 meses</div>
-        </div>
-        <div class="frente-body">
-          <div class="frente-detail"><strong>Idea clave</strong>Construir un sistema mínimo viable de seguimiento que integre asistencia, notas, LMS, tutorías, bienestar y prácticas.</div>
-          <div class="frente-detail"><strong>Impacto esperado</strong>Permite intervenir antes del rezago acumulado y mejora la toma de decisiones institucionales.</div>
-          <div class="frente-detail"><strong>Horizonte</strong><span class="h0">0 a 12 meses</span></div>
-          <div class="frente-detail"><strong>Indicadores sugeridos</strong>% alertas atendidas; tiempo de respuesta; estudiantes con datos integrados; permanencia de primer a segundo año.</div>
-        </div>
-        <button class="frente-toggle" onclick="toggleFrente(this)">Expandir detalles <span class="toggle-icon">▾</span></button>
-      </div>
-
-      <div class="frente-card f3" data-idx="2">
-        <div class="frente-header">
-          <div class="frente-num">FRENTE 03</div>
-          <div class="frente-icon">✅</div>
-          <div class="frente-title">Evaluación formativa, retroalimentación y resultados de aprendizaje</div>
-          <div class="frente-badge badge-alta">● Prioridad alta · 0–12 meses</div>
-        </div>
-        <div class="frente-body">
-          <div class="frente-detail"><strong>Idea clave</strong>Convertir la evaluación en una herramienta de aprendizaje, seguimiento y mejora, no solo en una calificación.</div>
-          <div class="frente-detail"><strong>Impacto esperado</strong>Aumenta percepción de justicia académica, reduce reprobación acumulada y fortalece acreditación.</div>
-          <div class="frente-detail"><strong>Horizonte</strong><span class="h0">0 a 12 meses</span></div>
-          <div class="frente-detail"><strong>Indicadores sugeridos</strong>% cursos con rúbricas; tiempo de retroalimentación; estudiantes con plan de mejora; logro de resultados de aprendizaje.</div>
-        </div>
-        <button class="frente-toggle" onclick="toggleFrente(this)">Expandir detalles <span class="toggle-icon">▾</span></button>
-      </div>
-
-      <div class="frente-card f4" data-idx="3">
-        <div class="frente-header">
-          <div class="frente-num">FRENTE 04</div>
-          <div class="frente-icon">🤖</div>
-          <div class="frente-title">Ruta docente en IA educativa, pedagogía activa y acompañamiento</div>
-          <div class="frente-badge badge-alta">● Prioridad alta · 0–12 meses</div>
-        </div>
-        <div class="frente-body">
-          <div class="frente-detail"><strong>Idea clave</strong>Formar docentes como diseñadores de experiencias de aprendizaje, con dominio de IA responsable, evaluación, ABP, simulación y feedback.</div>
-          <div class="frente-detail"><strong>Impacto esperado</strong>Mejora consistencia pedagógica, innovación docente y experiencia del estudiante.</div>
-          <div class="frente-detail"><strong>Horizonte</strong><span class="h0">0 a 12 meses</span></div>
-          <div class="frente-detail"><strong>Indicadores sugeridos</strong>% docentes formados; asignaturas rediseñadas; productos pedagógicos creados; evidencias de uso responsable de IA.</div>
-        </div>
-        <button class="frente-toggle" onclick="toggleFrente(this)">Expandir detalles <span class="toggle-icon">▾</span></button>
-      </div>
-
-      <div class="frente-card f5" data-idx="4">
-        <div class="frente-header">
-          <div class="frente-num">FRENTE 05</div>
-          <div class="frente-icon">🌿</div>
-          <div class="frente-title">Acompañamiento integral, bienestar y permanencia más allá de la nota</div>
-          <div class="frente-badge badge-alta">● Prioridad alta · 0–12 meses</div>
-        </div>
-        <div class="frente-body">
-          <div class="frente-detail"><strong>Idea clave</strong>Articular tutoría académica, mentoría docente, bienestar psicológico, educación socioemocional y rutas de derivación.</div>
-          <div class="frente-detail"><strong>Impacto esperado</strong>Mejora permanencia, motivación, sentido de pertenencia y bienestar estudiantil.</div>
-          <div class="frente-detail"><strong>Horizonte</strong><span class="h0">0 a 12 meses</span></div>
-          <div class="frente-detail"><strong>Indicadores sugeridos</strong>Uso de tutorías; derivaciones efectivas; alertas psicosociales atendidas; tasa de permanencia; satisfacción con bienestar.</div>
-        </div>
-        <button class="frente-toggle" onclick="toggleFrente(this)">Expandir detalles <span class="toggle-icon">▾</span></button>
-      </div>
-
-      <div class="frente-card f6" data-idx="5">
-        <div class="frente-header">
-          <div class="frente-num">FRENTE 06</div>
-          <div class="frente-icon">🏥</div>
-          <div class="frente-title">Simulación, práctica formativa y aprendizaje experiencial interprofesional</div>
-          <div class="frente-badge badge-media">⬤ Prioridad media · 6–18 meses</div>
-        </div>
-        <div class="frente-body">
-          <div class="frente-detail"><strong>Idea clave</strong>Conectar simulación, realidad virtual, hospital virtual, debriefing, práctica y evaluación en una red curricular progresiva.</div>
-          <div class="frente-detail"><strong>Impacto esperado</strong>Mejora seguridad, confianza, desempeño profesional y experiencia en prácticas.</div>
-          <div class="frente-detail"><strong>Horizonte</strong><span class="h1">6 a 18 meses</span></div>
-          <div class="frente-detail"><strong>Indicadores sugeridos</strong>Horas de simulación; escenarios con debriefing; docentes de práctica formados; satisfacción con prácticas; desempeño en rotaciones.</div>
-        </div>
-        <button class="frente-toggle" onclick="toggleFrente(this)">Expandir detalles <span class="toggle-icon">▾</span></button>
-      </div>
-
-      <div class="frente-card f7" data-idx="6">
-        <div class="frente-header">
-          <div class="frente-num">FRENTE 07</div>
-          <div class="frente-icon">🔬</div>
-          <div class="frente-title">Currículo integrado, interdisciplinariedad, investigación formativa y comunidad</div>
-          <div class="frente-badge badge-progresiva">○ Prioridad progresiva · 1–3 años</div>
-        </div>
-        <div class="frente-body">
-          <div class="frente-detail"><strong>Idea clave</strong>Diseñar experiencias integradoras que conecten ciencias básicas, clínica, comunidad, investigación, ética, legalidad y trabajo interprofesional.</div>
-          <div class="frente-detail"><strong>Impacto esperado</strong>Fortalece pertinencia social, colaboración, pensamiento crítico e identidad profesional.</div>
-          <div class="frente-detail"><strong>Horizonte</strong><span class="h2">1 a 3 años</span></div>
-          <div class="frente-detail"><strong>Indicadores sugeridos</strong>Experiencias interprofesionales; estudiantes participantes; productos de investigación formativa; satisfacción de comunidad o aliados.</div>
-        </div>
-        <button class="frente-toggle" onclick="toggleFrente(this)">Expandir detalles <span class="toggle-icon">▾</span></button>
-      </div>
-
-      <div class="frente-card f8" data-idx="7">
-        <div class="frente-header">
-          <div class="frente-num">FRENTE 08</div>
-          <div class="frente-icon">💬</div>
-          <div class="frente-title">Experiencia institucional del estudiante: comunicación, servicios y plataformas</div>
-          <div class="frente-badge badge-alta">● Prioridad alta · 0–6 meses</div>
-        </div>
-        <div class="frente-body">
-          <div class="frente-detail"><strong>Idea clave</strong>Reducir fricciones mediante canales claros, tiempos de respuesta, protocolo de prácticas, bot orientador y mapa de servicios estudiantiles.</div>
-          <div class="frente-detail"><strong>Impacto esperado</strong>Aumenta confianza, satisfacción, sentido de acompañamiento y eficiencia institucional.</div>
-          <div class="frente-detail"><strong>Horizonte</strong><span class="h0">0 a 6 meses</span></div>
-          <div class="frente-detail"><strong>Indicadores sugeridos</strong>Tiempo promedio de respuesta; satisfacción con comunicación; uso del bot; solicitudes resueltas; NPS estudiantil.</div>
-        </div>
-        <button class="frente-toggle" onclick="toggleFrente(this)">Expandir detalles <span class="toggle-icon">▾</span></button>
-      </div>
-
+      <div class="mint">"La fase inicial debe concentrarse en el cuadrante de <strong>alto impacto / alta factibilidad</strong>: desarrollo docente (F4), analítica y alertas (F2), evaluación formativa (F3), bienestar (F5) y comunicación (F8). Estos frentes crean las condiciones sistémicas para escalar posteriormente educación personalizada (F1), simulación avanzada (F6) e integración curricular (F7)."</div>
     </div>
   </div>
 </section>
 
-<!-- ── MATRIZ PRIORIDADES ── -->
-<section id="prioridades">
-  <div class="container">
-    <div class="section-label">Priorización estratégica</div>
-    <h2 class="section-title">Matriz de impacto vs. factibilidad</h2>
-    <p class="section-sub">Cada burbuja representa un frente estratégico. El eje Y indica el impacto sobre el aprendizaje y la experiencia del estudiante; el eje X, la factibilidad de implementación. El tamaño refleja la urgencia institucional.</p>
-    <div class="matrix-container reveal">
-      <div class="matrix-chart-wrap"><canvas id="chartMatrix"></canvas></div>
-      <div class="matrix-legend">
-        <div class="ml-item"><div class="ml-dot" style="background:#c0392b;"></div> Alta prioridad</div>
-        <div class="ml-item"><div class="ml-dot" style="background:#2980b9;"></div> Prioridad media</div>
-        <div class="ml-item"><div class="ml-dot" style="background:#7f8c8d;"></div> Prioridad progresiva</div>
+<!-- ─── JOURNEY ─── -->
+<section id="jou">
+  <div class="w">
+    <div class="tag">Journey del estudiante · Mapa de experiencia</div>
+    <h2 class="h1">Las 8 etapas del recorrido formativo y sus oportunidades</h2>
+    <p class="lead">Selecciona cada etapa para ver el diagnóstico de fricción, la oportunidad estratégica, los actores responsables y los indicadores de seguimiento.</p>
+    <div class="jsc"><div class="jtr" id="jtr">
+      <div class="js" onclick="selJ(0,this)"><div class="jnd">🎯</div><div class="jlb">Admisión e Ingreso</div></div>
+      <div class="js" onclick="selJ(1,this)"><div class="jnd">🌱</div><div class="jlb">Inducción y Adaptación</div></div>
+      <div class="js" onclick="selJ(2,this)"><div class="jnd">📚</div><div class="jlb">Formación Académica</div></div>
+      <div class="js" onclick="selJ(3,this)"><div class="jnd">📋</div><div class="jlb">Evaluación y Seguimiento</div></div>
+      <div class="js" onclick="selJ(4,this)"><div class="jnd">🏨</div><div class="jlb">Prácticas Formativas</div></div>
+      <div class="js" onclick="selJ(5,this)"><div class="jnd">💚</div><div class="jlb">Bienestar y Permanencia</div></div>
+      <div class="js" onclick="selJ(6,this)"><div class="jnd">🎓</div><div class="jlb">Graduación y Empleabilidad</div></div>
+      <div class="js" onclick="selJ(7,this)"><div class="jnd">🤝</div><div class="jlb">Egresado y Vínculo</div></div>
+    </div></div>
+    <div class="jpan" id="jpan"><p class="jhint">← Selecciona una etapa del journey para ver el análisis estratégico detallado.</p></div>
+    <div class="jph rv">"Gestionar el journey del estudiante significa anticipar fricciones, coordinar respuestas institucionales y garantizar que cada etapa sea formativa, acompañada y trazable. El estudiante no vive etapas: vive una sola experiencia."</div>
+  </div>
+</section>
+
+<!-- ─── HOJA DE RUTA ─── -->
+<section id="hdr">
+  <div class="w" style="position:relative">
+    <div class="tag sv">Hoja de ruta de implementación</div>
+    <h2 class="h1 inv">Tres fases hacia el modelo institucional de excelencia</h2>
+    <p class="lead inv">De los hallazgos del taller participativo a un modelo de excelencia educativa evaluado, escalable y con evidencias para acreditación.</p>
+    <div class="ttabs">
+      <button class="ttab on" onclick="swT(0)">Fase 1 · 0–6 meses</button>
+      <button class="ttab" onclick="swT(1)">Fase 2 · 6–18 meses</button>
+      <button class="ttab" onclick="swT(2)">Fase 3 · 18–36 meses</button>
+    </div>
+    <div class="tpan on" id="tp0">
+      <div class="ttp"><div><div class="tptit">Activación y gobernanza</div><div class="tpobj">Establecer la gobernanza institucional de la agenda, validar los hallazgos y lanzar las primeras acciones visibles que demuestren voluntad de transformación.</div></div><div class="tbdg">FASE 1 · 0–6 MESES</div></div>
+      <div class="tacts">
+        <div class="ta2"><div class="tdt">1</div><p>Validar hallazgos del taller con directivos y coordinadores de los programas de la Facultad.</p></div>
+        <div class="ta2"><div class="tdt">2</div><p>Instalar la Mesa de Excelencia Educativa y Journey del Estudiante con roles y gobernanza definidos.</p></div>
+        <div class="ta2"><div class="tdt">3</div><p>Construir la línea base de indicadores: datos mínimos de permanencia, alerta, satisfacción y evaluación.</p></div>
+        <div class="ta2"><div class="tdt">4</div><p>Seleccionar programas, asignaturas o semestres piloto para cada frente prioritario.</p></div>
+        <div class="ta2"><div class="tdt">5</div><p>Lanzar la ruta docente inicial: formación en IA educativa responsable y evaluación formativa.</p></div>
+        <div class="ta2"><div class="tdt">6</div><p>Activar el protocolo de comunicación efectiva: canales, tiempos de respuesta y mapa de servicios.</p></div>
+        <div class="ta2"><div class="tdt">7</div><p>Caracterizar estudiantes de ingreso e identificar poblaciones en situación de riesgo académico.</p></div>
       </div>
-      <div class="matrix-interpretation">
-        "La primera fase debe concentrarse en frentes habilitadores de rápida activación: desarrollo docente, analítica, evaluación, bienestar y comunicación. Estos frentes crean condiciones para escalar posteriormente educación personalizada, simulación avanzada e integración curricular."
+      <div class="tprod"><h5>Productos verificables de la fase</h5><p>Acta de validación institucional · Mesa instalada con backlog priorizado · Indicadores base definidos · Pilotos seleccionados · Protocolo de comunicación socializado.</p></div>
+    </div>
+    <div class="tpan" id="tp1">
+      <div class="ttp"><div><div class="tptit">Consolidación de pilotos</div><div class="tpobj">Convertir las prioridades en pilotos institucionales con evidencias verificables de impacto académico y de bienestar estudiantil.</div></div><div class="tbdg">FASE 2 · 6–18 MESES</div></div>
+      <div class="tacts">
+        <div class="ta2"><div class="tdt">1</div><p>Implementar pilotos de educación personalizada con trayectorias diferenciadas por programa.</p></div>
+        <div class="ta2"><div class="tdt">2</div><p>Desplegar el sistema de alerta temprana integrado: notas, asistencia, LMS y bienestar.</p></div>
+        <div class="ta2"><div class="tdt">3</div><p>Rediseñar la evaluación con rúbricas, ciclos de feedback y mapeo de resultados de aprendizaje.</p></div>
+        <div class="ta2"><div class="tdt">4</div><p>Escalar la formación docente a tres niveles: básico, avanzado y liderazgo pedagógico.</p></div>
+        <div class="ta2"><div class="tdt">5</div><p>Fortalecer los escenarios de simulación, debriefing y evaluación de prácticas formativas.</p></div>
+        <div class="ta2"><div class="tdt">6</div><p>Articular protocolos de acompañamiento académico y psicosocial con derivación efectiva.</p></div>
+        <div class="ta2"><div class="tdt">7</div><p>Diseñar módulos interprofesionales entre programas de la Facultad.</p></div>
+      </div>
+      <div class="tprod"><h5>Productos verificables de la fase</h5><p>Tablero de pilotos con indicadores · Cursos críticos rediseñados · Docentes certificados · Rutas de acompañamiento activas · Escenarios de simulación mapeados.</p></div>
+    </div>
+    <div class="tpan" id="tp2">
+      <div class="ttp"><div><div class="tptit">Escalamiento institucional</div><div class="tpobj">Convertir los pilotos en un modelo institucional de excelencia educativa replicable, evaluado y con evidencias sólidas para acreditación.</div></div><div class="tbdg">FASE 3 · 18–36 MESES</div></div>
+      <div class="tacts">
+        <div class="ta2"><div class="tdt">1</div><p>Escalar las prácticas validadas a todos los programas de la Facultad con acompañamiento.</p></div>
+        <div class="ta2"><div class="tdt">2</div><p>Integrar sistemas institucionales en un tablero longitudinal del journey estudiantil.</p></div>
+        <div class="ta2"><div class="tdt">3</div><p>Formalizar el modelo de student journey como política de la Facultad aprobada por el Comité.</p></div>
+        <div class="ta2"><div class="tdt">4</div><p>Generar reportes semestrales de seguimiento para toma de decisiones del Comité.</p></div>
+        <div class="ta2"><div class="tdt">5</div><p>Desarrollar investigación educativa con evidencias del modelo implementado.</p></div>
+        <div class="ta2"><div class="tdt">6</div><p>Construir el portafolio de evidencias para procesos de acreditación nacional e internacional.</p></div>
+        <div class="ta2"><div class="tdt">7</div><p>Implementar sistema activo de seguimiento a egresados y aliados empleadores.</p></div>
+      </div>
+      <div class="tprod"><h5>Productos verificables de la fase</h5><p>Modelo institucional aprobado · Sistema longitudinal del journey operativo · Portafolio de evidencias · Informes semestrales · Indicadores de resultado consolidados.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── DECISIONES ─── -->
+<section id="dec">
+  <div class="w">
+    <div class="tag">Para el Comité de Facultad</div>
+    <h2 class="h1">Cinco decisiones estratégicas para activar la agenda</h2>
+    <p class="lead">Decisiones concretas y verificables que el Comité puede tomar para convertir los hallazgos en acción institucional real con evidencias de impacto.</p>
+    <div class="d5 rv">
+      <div class="dc"><div class="dn">1</div><h4>Aprobar la instalación de la Mesa de Excelencia Educativa y Journey del Estudiante</h4></div>
+      <div class="dc"><div class="dn">2</div><h4>Validar los cinco frentes de alta prioridad para activación en los próximos 12 meses</h4></div>
+      <div class="dc"><div class="dn">3</div><h4>Seleccionar programas, asignaturas o semestres piloto para el primer semestre de implementación</h4></div>
+      <div class="dc"><div class="dn">4</div><h4>Designar responsables institucionales por frente estratégico con mandato claro</h4></div>
+      <div class="dc"><div class="dn">5</div><h4>Solicitar la línea base de indicadores para seguimiento semestral por el Comité</h4></div>
+    </div>
+    <div class="n90 rv d2">
+      <h3>⏱️ Compromisos verificables en los primeros 90 días</h3>
+      <div class="ng">
+        <div class="ni"><span class="nc">✓</span><p>Mesa de Excelencia instalada con gobernanza, roles y cronograma definidos.</p></div>
+        <div class="ni"><span class="nc">✓</span><p>Backlog priorizado de las acciones del Frente 08 (Comunicación) activo en las primeras 4 semanas.</p></div>
+        <div class="ni"><span class="nc">✓</span><p>Primera cohorte de formación docente en IA educativa responsable convocada.</p></div>
+        <div class="ni"><span class="nc">✓</span><p>Protocolo de comunicación estudiante–institución socializado y en implementación.</p></div>
+        <div class="ni"><span class="nc">✓</span><p>Variables mínimas del tablero de seguimiento definidas y fuentes de datos identificadas.</p></div>
+        <div class="ni"><span class="nc">✓</span><p>Caracterización de estudiantes de ingreso iniciada en al menos un programa piloto.</p></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── JOURNEY ── -->
-<section id="journey">
-  <div class="container">
-    <div class="section-label">Mapa del estudiante</div>
-    <h2 class="section-title">Journey del estudiante en la Facultad</h2>
-    <p class="section-sub">Selecciona cada etapa del recorrido estudiantil para explorar fricciones, oportunidades, actores responsables e indicadores clave.</p>
-
-    <div class="journey-container">
-      <div class="journey-track" id="journeyTrack">
-        <div class="journey-step" onclick="selectJourney(0,this)">
-          <div class="journey-node">🎯</div>
-          <div class="journey-step-label">Admisión e Ingreso</div>
-        </div>
-        <div class="journey-step" onclick="selectJourney(1,this)">
-          <div class="journey-node">🌱</div>
-          <div class="journey-step-label">Inducción y Adaptación</div>
-        </div>
-        <div class="journey-step" onclick="selectJourney(2,this)">
-          <div class="journey-node">📚</div>
-          <div class="journey-step-label">Formación Académica</div>
-        </div>
-        <div class="journey-step" onclick="selectJourney(3,this)">
-          <div class="journey-node">📋</div>
-          <div class="journey-step-label">Evaluación y Seguimiento</div>
-        </div>
-        <div class="journey-step" onclick="selectJourney(4,this)">
-          <div class="journey-node">🏨</div>
-          <div class="journey-step-label">Prácticas Formativas</div>
-        </div>
-        <div class="journey-step" onclick="selectJourney(5,this)">
-          <div class="journey-node">💚</div>
-          <div class="journey-step-label">Bienestar y Permanencia</div>
-        </div>
-        <div class="journey-step" onclick="selectJourney(6,this)">
-          <div class="journey-node">🎓</div>
-          <div class="journey-step-label">Graduación y Empleabilidad</div>
-        </div>
-        <div class="journey-step" onclick="selectJourney(7,this)">
-          <div class="journey-node">🤝</div>
-          <div class="journey-step-label">Egresado y Vínculo Posterior</div>
-        </div>
-      </div>
+<!-- ─── CIERRE ─── -->
+<section id="close">
+  <div class="w">
+    <div class="ce">🌟</div>
+    <h2 class="ch">La Facultad de Ciencias de la Salud UNAB tiene la oportunidad de liderar una transformación educativa más <em>personalizada</em>, más <em>humana</em>, más <em>trazable</em> y más orientada a <em>resultados de aprendizaje.</em></h2>
+    <p class="cp">Los hallazgos del taller, el análisis institucional y el benchmarking nacional e internacional señalan con claridad el camino. La prioridad ahora es la acción: gobernanza, pilotos, indicadores y mejora continua.</p>
+    <div class="cbt">
+      <a href="#dec" class="btn bw">↑ Ir a las decisiones estratégicas</a>
+      <a href="#analisis" class="btn bwi">Ver análisis estratégico</a>
     </div>
-
-    <div class="journey-detail-panel" id="journeyPanel">
-      <p style="color:var(--text-light);text-align:center;font-size:0.9rem;padding:2rem 0;">← Selecciona una etapa del journey para explorar sus detalles estratégicos.</p>
-    </div>
-
-    <div class="journey-phrase reveal">
-      "Gestionar el journey significa anticipar fricciones, coordinar respuestas y asegurar que cada etapa del estudiante sea formativa, acompañada y trazable."
-    </div>
-  </div>
-</section>
-
-<!-- ── HOJA DE RUTA ── -->
-<section id="hoja-de-ruta">
-  <div class="container">
-    <div class="section-label">Hoja de ruta</div>
-    <h2 class="section-title light">Tres fases de implementación</h2>
-    <p class="section-sub" style="color:rgba(255,255,255,0.65)">De los hallazgos del taller a un modelo institucional de excelencia educativa.</p>
-
-    <div class="timeline-tabs">
-      <button class="tl-tab active" onclick="switchTab(0)">Fase 1 · 0–6 meses</button>
-      <button class="tl-tab" onclick="switchTab(1)">Fase 2 · 6–18 meses</button>
-      <button class="tl-tab" onclick="switchTab(2)">Fase 3 · 18–36 meses</button>
-    </div>
-
-    <div class="tl-panel active" id="tl0">
-      <div class="tl-header">
-        <div>
-          <div class="tl-phase-title">Activación temprana</div>
-          <div class="tl-objective">Generar legitimidad, gobernanza y primeras acciones visibles que demuestren voluntad institucional de transformación.</div>
-        </div>
-        <div class="tl-badge">FASE 1 · 0 A 6 MESES</div>
-      </div>
-      <div class="tl-actions">
-        <div class="tl-action"><div class="tl-bullet">1</div><p>Validar hallazgos del taller con directivos y programas.</p></div>
-        <div class="tl-action"><div class="tl-bullet">2</div><p>Instalar Mesa de Excelencia Educativa y Journey del Estudiante.</p></div>
-        <div class="tl-action"><div class="tl-bullet">3</div><p>Construir línea base mínima de indicadores de seguimiento.</p></div>
-        <div class="tl-action"><div class="tl-bullet">4</div><p>Identificar programas, asignaturas o prácticas piloto.</p></div>
-        <div class="tl-action"><div class="tl-bullet">5</div><p>Lanzar formación docente inicial en IA educativa responsable.</p></div>
-        <div class="tl-action"><div class="tl-bullet">6</div><p>Activar protocolo de comunicación práctica-evaluación.</p></div>
-        <div class="tl-action"><div class="tl-bullet">7</div><p>Caracterizar estudiantes de ingreso o en situación de riesgo académico.</p></div>
-      </div>
-      <div class="tl-product">
-        <h5>Productos verificables</h5>
-        <p>Acta de validación · Backlog priorizado · Indicadores base · Pilotos definidos · Protocolo socializado.</p>
-      </div>
-    </div>
-
-    <div class="tl-panel" id="tl1">
-      <div class="tl-header">
-        <div>
-          <div class="tl-phase-title">Consolidación</div>
-          <div class="tl-objective">Convertir las prioridades en pilotos institucionales sostenibles con evidencias de impacto.</div>
-        </div>
-        <div class="tl-badge">FASE 2 · 6 A 18 MESES</div>
-      </div>
-      <div class="tl-actions">
-        <div class="tl-action"><div class="tl-bullet">1</div><p>Pilotos de educación personalizada por programa.</p></div>
-        <div class="tl-action"><div class="tl-bullet">2</div><p>Implementar sistema de alerta temprana con variables mínimas.</p></div>
-        <div class="tl-action"><div class="tl-bullet">3</div><p>Rediseño de evaluación con rúbricas y ciclos de feedback.</p></div>
-        <div class="tl-action"><div class="tl-bullet">4</div><p>Formación docente por niveles: básico, avanzado y liderazgo pedagógico.</p></div>
-        <div class="tl-action"><div class="tl-bullet">5</div><p>Fortalecimiento de simulación, debriefing y prácticas formativas.</p></div>
-        <div class="tl-action"><div class="tl-bullet">6</div><p>Protocolos de acompañamiento académico y psicosocial articulados.</p></div>
-        <div class="tl-action"><div class="tl-bullet">7</div><p>Desarrollo de módulos interprofesionales entre programas.</p></div>
-      </div>
-      <div class="tl-product">
-        <h5>Productos verificables</h5>
-        <p>Tablero piloto · Cursos críticos rediseñados · Docentes certificados · Rutas de acompañamiento · Escenarios de simulación/práctica mapeados.</p>
-      </div>
-    </div>
-
-    <div class="tl-panel" id="tl2">
-      <div class="tl-header">
-        <div>
-          <div class="tl-phase-title">Escalamiento</div>
-          <div class="tl-objective">Convertir los pilotos en un modelo institucional de excelencia educativa replicable y evaluado.</div>
-        </div>
-        <div class="tl-badge">FASE 3 · 18 A 36 MESES</div>
-      </div>
-      <div class="tl-actions">
-        <div class="tl-action"><div class="tl-bullet">1</div><p>Escalar buenas prácticas a todos los programas de la Facultad.</p></div>
-        <div class="tl-action"><div class="tl-bullet">2</div><p>Integrar sistemas institucionales en un tablero longitudinal del journey.</p></div>
-        <div class="tl-action"><div class="tl-bullet">3</div><p>Consolidar el modelo de student journey como política de Facultad.</p></div>
-        <div class="tl-action"><div class="tl-bullet">4</div><p>Generar reportes semestrales de seguimiento para toma de decisiones.</p></div>
-        <div class="tl-action"><div class="tl-bullet">5</div><p>Desarrollar investigación educativa con evidencias del modelo.</p></div>
-        <div class="tl-action"><div class="tl-bullet">6</div><p>Preparar portafolio de evidencias para procesos de acreditación.</p></div>
-        <div class="tl-action"><div class="tl-bullet">7</div><p>Implementar seguimiento activo a egresados y aliados empleadores.</p></div>
-      </div>
-      <div class="tl-product">
-        <h5>Productos verificables</h5>
-        <p>Modelo aprobado · Sistema longitudinal del journey · Repositorio de evidencias · Informes semestrales · Indicadores de resultado consolidados.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── DECISIONES ── -->
-<section id="decisiones">
-  <div class="container">
-    <div class="section-label">Para el Comité de Facultad</div>
-    <h2 class="section-title">Cinco decisiones para activar la agenda</h2>
-    <p class="section-sub">Propuestas concretas para que el Comité de Facultad active la transformación educativa en la Facultad de Ciencias de la Salud.</p>
-
-    <div class="decisions-grid reveal">
-      <div class="decision-card">
-        <div class="decision-num">1</div>
-        <h4>Aprobar la instalación de la Mesa de Excelencia Educativa y Journey del Estudiante</h4>
-      </div>
-      <div class="decision-card">
-        <div class="decision-num">2</div>
-        <h4>Validar los cinco frentes de alta prioridad para activación temprana (0–12 meses)</h4>
-      </div>
-      <div class="decision-card">
-        <div class="decision-num">3</div>
-        <h4>Seleccionar programas, asignaturas o prácticas piloto para el primer semestre</h4>
-      </div>
-      <div class="decision-card">
-        <div class="decision-num">4</div>
-        <h4>Definir responsables institucionales por cada frente estratégico</h4>
-      </div>
-      <div class="decision-card">
-        <div class="decision-num">5</div>
-        <h4>Solicitar una línea base de indicadores para seguimiento semestral</h4>
-      </div>
-    </div>
-
-    <div class="ninety-block reveal">
-      <h3>⏱️ Primeros 90 días: acciones inmediatas</h3>
-      <div class="ninety-grid">
-        <div class="ninety-item"><div class="ninety-check">✓</div><p>Mesa de Excelencia instalada con gobernanza definida.</p></div>
-        <div class="ninety-item"><div class="ninety-check">✓</div><p>Backlog priorizado con responsables y fechas asignadas.</p></div>
-        <div class="ninety-item"><div class="ninety-check">✓</div><p>Formación docente inicial en IA educativa responsable lanzada.</p></div>
-        <div class="ninety-item"><div class="ninety-check">✓</div><p>Protocolo de comunicación práctica-evaluación socializado.</p></div>
-        <div class="ninety-item"><div class="ninety-check">✓</div><p>Variables mínimas definidas para tablero de seguimiento.</p></div>
-        <div class="ninety-item"><div class="ninety-check">✓</div><p>Caracterización inicial de estudiantes de ingreso y en riesgo.</p></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── CIERRE ── -->
-<section id="cierre">
-  <div class="container" style="position:relative;">
-    <div class="cierre-main">
-      La Facultad de Ciencias de la Salud UNAB tiene la oportunidad de liderar una evolución educativa centrada en el estudiante: más <em>personalizada</em>, más <em>humana</em>, más <em>trazable</em>, más <em>predictiva</em> y más orientada a <em>resultados de aprendizaje</em>.
-    </div>
-    <p class="cierre-sub">El taller no debe entenderse como un diagnóstico final, sino como el punto de partida de una agenda institucional de transformación educativa. La prioridad ahora es convertir los hallazgos en decisiones, pilotos, indicadores y evidencias de mejora.</p>
-    <div>
-      <a href="#" onclick="navTo('decisiones')" class="btn btn-primary" style="display:inline-flex;">↑ Ir a las decisiones del Comité</a>
-    </div>
-    <div class="cierre-footer">Facultad de Ciencias de la Salud · Universidad Autónoma de Bucaramanga · UNAB · 2025</div>
+    <div class="cf">Universidad Autónoma de Bucaramanga · Facultad de Ciencias de la Salud · Agenda Estratégica 2026 · Acreditación Institucional de Alta Calidad</div>
   </div>
 </section>
 
 <script>
-// ── NAV SCROLL (works in iframes + browsers) ──
-function navTo(id) {
-  event.preventDefault();
-  const el = document.getElementById(id);
-  if (!el) return;
-  const navH = document.querySelector('nav').offsetHeight;
-  const top = el.getBoundingClientRect().top + window.scrollY - navH - 8;
-  window.scrollTo({ top, behavior: 'smooth' });
+/* ── REVEAL ── */
+const OB=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on')}),{threshold:.08});
+document.querySelectorAll('.rv').forEach(el=>OB.observe(el));
+
+/* ── CHARTS ── */
+Chart.defaults.font.family="'Outfit',sans-serif";
+Chart.defaults.color="#4A4A6A";
+const cats=['Enseñanza y\naprendizaje','Infraestructura','Formación\nintegral','Apoyo a\ndocentes','Percepción\nestudiantil'];
+new Chart(document.getElementById('cA'),{type:'bar',data:{labels:cats,datasets:[{label:'Post-its',data:[21,11,16,8,8],backgroundColor:['#F08020','#006B6E','#1B5E20','#4A148C','#0D47A1'],borderRadius:7,borderSkipped:false}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,grid:{color:'#F0ECE6'},ticks:{stepSize:5}},x:{grid:{display:false}}}}});
+new Chart(document.getElementById('cB'),{type:'bar',data:{labels:cats,datasets:[{label:'Urgente',data:[5,4,3,5,4],backgroundColor:'#C0392B',borderRadius:4},{label:'Importante',data:[7,7,4,1,2],backgroundColor:'#1F6BAA',borderRadius:4},{label:'Futuro',data:[7,4,5,5,0],backgroundColor:'#1E8449',borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top',labels:{boxWidth:11,padding:14}}},scales:{x:{stacked:true,grid:{display:false}},y:{stacked:true,beginAtZero:true,grid:{color:'#F0ECE6'}}}}});
+new Chart(document.getElementById('cC'),{type:'doughnut',data:{labels:['Urgentes','Importantes','Futuro'],datasets:[{data:[21,21,21],backgroundColor:['#C0392B','#1F6BAA','#1E8449'],borderWidth:0,hoverOffset:8}]},options:{responsive:true,maintainAspectRatio:false,cutout:'62%',plugins:{legend:{display:false}}}});
+
+/* ── FRENTES TOGGLE ── */
+function togF(btn){
+  const c=btn.closest('.fc'),b=c.querySelector('.fb'),op=b.classList.contains('op');
+  document.querySelectorAll('.fb.op').forEach(x=>x.classList.remove('op'));
+  document.querySelectorAll('.fc.op').forEach(x=>x.classList.remove('op'));
+  if(!op){b.classList.add('op');c.classList.add('op');btn.innerHTML='Cerrar <span class="ta" style="transform:rotate(180deg)">▾</span>'}
+  else btn.innerHTML='Ver análisis detallado <span class="ta">▾</span>';
 }
 
-// Active nav link on scroll
-const sections = ['inicio','hallazgos','lectura','oportunidades','prioridades','journey','hoja-de-ruta','decisiones'];
-const navLinks = document.querySelectorAll('.nav-links a');
-window.addEventListener('scroll', () => {
-  const navH = document.querySelector('nav').offsetHeight;
-  let current = '';
-  sections.forEach(id => {
-    const sec = document.getElementById(id);
-    if (sec && window.scrollY >= sec.offsetTop - navH - 40) current = id;
+/* ── SVG DRAGGABLE MATRIX ── */
+(function(){
+  const svg=document.getElementById('msvg');
+  const W=740,H=460,L=70,T=25,R=35,B=20;
+  const PW=W-L-R, PH=H-T-B;
+  const tip=document.getElementById('mttip');
+
+  // Each bubble: id, name (line1 / line2), initial position (0-1 fractions), radius, color, priority label
+  const BS=[
+    {id:'F8',n1:'F8',n2:'Comunicación',fx:.84,fy:.72,r:28,c:'#A93226',lbl:'F8 · Comunicación y plataformas\nPrioridad alta · 0–6 meses'},
+    {id:'F4',n1:'F4',n2:'Docentes+IA',fx:.78,fy:.88,r:32,c:'#C0392B',lbl:'F4 · Desarrollo docente e IA\nPrioridad alta · 0–12 meses'},
+    {id:'F2',n1:'F2',n2:'Analítica',fx:.68,fy:.84,r:30,c:'#B03020',lbl:'F2 · Analítica y alertas tempranas\nPrioridad alta · 0–12 meses'},
+    {id:'F3',n1:'F3',n2:'Evaluación',fx:.74,fy:.78,r:29,c:'#E74C3C',lbl:'F3 · Evaluación formativa\nPrioridad alta · 0–12 meses'},
+    {id:'F5',n1:'F5',n2:'Bienestar',fx:.70,fy:.68,r:29,c:'#C0392B',lbl:'F5 · Bienestar y permanencia\nPrioridad alta · 0–12 meses'},
+    {id:'F1',n1:'F1',n2:'Personaliz.',fx:.48,fy:.82,r:24,c:'#1F6BAA',lbl:'F1 · Educación personalizada\nPrioridad media · 6–18 meses'},
+    {id:'F6',n1:'F6',n2:'Simulación',fx:.40,fy:.75,r:22,c:'#1565C0',lbl:'F6 · Simulación y práctica\nPrioridad media · 6–18 meses'},
+    {id:'F7',n1:'F7',n2:'Currículo',fx:.26,fy:.60,r:18,c:'#5D6D7E',lbl:'F7 · Currículo integrado\nPrioridad progresiva · 1–3 años'},
+  ];
+
+  function sxy(fx,fy){return{x:L+fx*PW, y:T+(1-fy)*PH}}
+  function fxy(x,y){return{fx:Math.min(1,Math.max(0,(x-L)/PW)), fy:Math.min(1,Math.max(0,1-(y-T)/PH))}}
+
+  BS.forEach(b=>{
+    const p=sxy(b.fx,b.fy);
+    const g=document.createElementNS('http://www.w3.org/2000/svg','g');
+    g.setAttribute('cursor','grab');
+    g.setAttribute('transform',`translate(${p.x},${p.y})`);
+
+    // Shadow circle
+    const sh=document.createElementNS('http://www.w3.org/2000/svg','circle');
+    sh.setAttribute('r',b.r+2);sh.setAttribute('fill','rgba(0,0,0,.18)');sh.setAttribute('cy','3');
+    // Main circle
+    const ci=document.createElementNS('http://www.w3.org/2000/svg','circle');
+    ci.setAttribute('r',b.r);ci.setAttribute('fill',b.c);ci.setAttribute('stroke','rgba(255,255,255,.4)');ci.setAttribute('stroke-width','1.5');
+    // ID label (larger, top)
+    const t1=document.createElementNS('http://www.w3.org/2000/svg','text');
+    t1.setAttribute('text-anchor','middle');t1.setAttribute('y','-5');
+    t1.setAttribute('font-size','11');t1.setAttribute('font-weight','800');t1.setAttribute('fill','white');t1.setAttribute('pointer-events','none');t1.setAttribute('font-family','Outfit,sans-serif');
+    t1.textContent=b.n1;
+    // Sub label (smaller, bottom)
+    const t2=document.createElementNS('http://www.w3.org/2000/svg','text');
+    t2.setAttribute('text-anchor','middle');t2.setAttribute('y','8');
+    t2.setAttribute('font-size','8.5');t2.setAttribute('font-weight','600');t2.setAttribute('fill','rgba(255,255,255,.88)');t2.setAttribute('pointer-events','none');t2.setAttribute('font-family','Outfit,sans-serif');
+    t2.textContent=b.n2;
+
+    g.appendChild(sh);g.appendChild(ci);g.appendChild(t1);g.appendChild(t2);
+    svg.appendChild(g);
+
+    let drag=false,ox=0,oy=0,cx=p.x,cy=p.y;
+    function gcp(e){return e.touches?{x:e.touches[0].clientX,y:e.touches[0].clientY}:{x:e.clientX,y:e.clientY}}
+    function sc(ex,ey){const r=svg.getBoundingClientRect();return{x:(ex-r.left)*(W/r.width),y:(ey-r.top)*(H/r.height)}}
+
+    g.addEventListener('mousedown',e=>{e.preventDefault();drag=true;const cp=gcp(e);const sp=sc(cp.x,cp.y);ox=sp.x-cx;oy=sp.y-cy;g.setAttribute('cursor','grabbing');svg.appendChild(g)});
+    g.addEventListener('touchstart',e=>{e.preventDefault();drag=true;const cp=gcp(e);const sp=sc(cp.x,cp.y);ox=sp.x-cx;oy=sp.y-cy;svg.appendChild(g)},{passive:false});
+
+    window.addEventListener('mousemove',e=>{
+      if(!drag)return;
+      const cp=gcp(e);const sp=sc(cp.x,cp.y);
+      cx=Math.min(W-R-b.r,Math.max(L+b.r,sp.x-ox));
+      cy=Math.min(H-B-b.r,Math.max(T+b.r,sp.y-oy));
+      g.setAttribute('transform',`translate(${cx},${cy})`);
+      const f=fxy(cx,cy);
+      tip.style.display='block';tip.style.left=(cp.x+16)+'px';tip.style.top=(cp.y-12)+'px';
+      tip.innerHTML=b.lbl.replace('\n','<br>')+'<br><span style="color:#F0B840;font-size:.68rem">Fact: '+(f.fx*100).toFixed(0)+'% · Impacto: '+(f.fy*100).toFixed(0)+'%</span>';
+    });
+    window.addEventListener('touchmove',e=>{
+      if(!drag)return;e.preventDefault();
+      const cp=gcp(e);const sp=sc(cp.x,cp.y);
+      cx=Math.min(W-R-b.r,Math.max(L+b.r,sp.x-ox));
+      cy=Math.min(H-B-b.r,Math.max(T+b.r,sp.y-oy));
+      g.setAttribute('transform',`translate(${cx},${cy})`);
+    },{passive:false});
+    window.addEventListener('mouseup',()=>{drag=false;g.setAttribute('cursor','grab');tip.style.display='none'});
+    window.addEventListener('touchend',()=>{drag=false;tip.style.display='none'});
+
+    g.addEventListener('mouseenter',e=>{if(drag)return;tip.style.display='block';tip.innerHTML=b.lbl.replace('\n','<br>');});
+    g.addEventListener('mousemove',e=>{if(drag)return;tip.style.left=(e.clientX+16)+'px';tip.style.top=(e.clientY-12)+'px';});
+    g.addEventListener('mouseleave',()=>{if(!drag)tip.style.display='none'});
   });
-  navLinks.forEach(a => {
-    a.style.color = '';
-    a.style.background = '';
-    const onclick = a.getAttribute('onclick') || '';
-    if (onclick.includes(`'${current}'`)) {
-      a.style.color = '#fff';
-      a.style.background = 'rgba(196,144,42,0.22)';
-    }
-  });
-});
+})();
 
-// ── REVEAL ON SCROLL ──
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); }});
-}, {threshold:0.1});
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-// ── FRENTES TOGGLE ──
-function toggleFrente(btn) {
-  const card = btn.closest('.frente-card');
-  const body = card.querySelector('.frente-body');
-  const isOpen = body.classList.contains('open');
-  document.querySelectorAll('.frente-body.open').forEach(b => b.classList.remove('open'));
-  document.querySelectorAll('.frente-card.open').forEach(c => c.classList.remove('open'));
-  document.querySelectorAll('.frente-toggle span').forEach(s => s.style.transform = '');
-  if(!isOpen) {
-    body.classList.add('open');
-    card.classList.add('open');
-    btn.querySelector('.toggle-icon').style.transform = 'rotate(180deg)';
-    btn.innerHTML = 'Cerrar detalles <span class="toggle-icon" style="transform:rotate(180deg);display:inline-block;">▾</span>';
-  } else {
-    btn.innerHTML = 'Expandir detalles <span class="toggle-icon">▾</span>';
-  }
-}
-
-// ── CHARTS ──
-Chart.defaults.font.family = "'DM Sans', sans-serif";
-Chart.defaults.color = '#4a5568';
-
-// Post-its bar
-new Chart(document.getElementById('chartPostits'), {
-  type: 'bar',
-  data: {
-    labels: ['Enseñanza y\naprendizaje','Infraestructura','Formación\nintegral','Apoyo a\ndocentes','Percepción\nestudiantil'],
-    datasets: [{
-      label: 'Post-its',
-      data: [21, 11, 16, 8, 8],
-      backgroundColor: ['#1a3260','#1b6b6e','#1e6b4a','#7d3c98','#c4902a'],
-      borderRadius: 6,
-      borderSkipped: false,
-    }]
-  },
-  options: {
-    responsive: true, maintainAspectRatio: false,
-    plugins: { legend: { display: false } },
-    scales: {
-      y: { beginAtZero: true, grid: { color: '#dde3ee' }, ticks: { stepSize: 5 } },
-      x: { grid: { display: false } }
-    }
-  }
-});
-
-// Stacked votes
-new Chart(document.getElementById('chartVotos'), {
-  type: 'bar',
-  data: {
-    labels: ['Enseñanza\n y aprendiz.','Infraestr.','Formac.\nintegral','Apoyo\ndocentes','Percepción\nestud.'],
-    datasets: [
-      { label: 'Urgente', data: [5,4,3,5,4], backgroundColor: '#c0392b', borderRadius: 4 },
-      { label: 'Importante', data: [7,7,4,1,2], backgroundColor: '#2980b9', borderRadius: 4 },
-      { label: 'Futuro', data: [7,4,5,5,0], backgroundColor: '#27ae60', borderRadius: 4 },
-    ]
-  },
-  options: {
-    responsive: true, maintainAspectRatio: false,
-    plugins: { legend: { position:'top', labels:{ boxWidth:12, padding:16 } } },
-    scales: {
-      x: { stacked: true, grid:{ display:false } },
-      y: { stacked: true, beginAtZero: true, grid:{ color:'#dde3ee' } }
-    }
-  }
-});
-
-// Donut
-new Chart(document.getElementById('chartDonut'), {
-  type: 'doughnut',
-  data: {
-    labels: ['Urgentes', 'Importantes', 'Futuro'],
-    datasets: [{ data: [21,21,21], backgroundColor:['#c0392b','#2980b9','#27ae60'], borderWidth:0, hoverOffset:8 }]
-  },
-  options: {
-    responsive: true, maintainAspectRatio: false,
-    cutout: '62%',
-    plugins: {
-      legend: { display: false },
-      tooltip: { callbacks: { label: ctx => ` ${ctx.label}: ${ctx.parsed} votos (33%)` } }
-    }
-  }
-});
-
-// Bubble matrix
-const matrixData = [
-  { x: 0.82, y: 0.88, r: 22, label: 'F4 · Desarrollo\ndocente e IA', color: '#c0392b' },
-  { x: 0.68, y: 0.92, r: 20, label: 'F2 · Analítica\ny alertas', color: '#c0392b' },
-  { x: 0.75, y: 0.85, r: 18, label: 'F3 · Evaluación\nformativa', color: '#c0392b' },
-  { x: 0.72, y: 0.80, r: 19, label: 'F5 · Bienestar\ny permanencia', color: '#c0392b' },
-  { x: 0.88, y: 0.75, r: 17, label: 'F8 · Experiencia\ne comunicación', color: '#c0392b' },
-  { x: 0.55, y: 0.82, r: 15, label: 'F1 · Educación\npersonalizada', color: '#2980b9' },
-  { x: 0.45, y: 0.88, r: 14, label: 'F6 · Simulación\ny práctica', color: '#2980b9' },
-  { x: 0.32, y: 0.76, r: 11, label: 'F7 · Currículo\nintegrado', color: '#7f8c8d' },
+/* ── JOURNEY DATA ── */
+const JD=[
+  {ic:'🎯',lb:'Admisión e Ingreso',dx:'Proceso poco articulado con caracterización académica y socioeconómica del estudiante. Sin perfil de ingreso integrado, los programas no pueden activar rutas de acompañamiento preventivas desde el primer día.',op:'Implementar un perfil de ingreso integrado que identifique fortalezas, riesgos y necesidades académicas y psicosociales desde el primer contacto institucional.',ac:'Decanatura · Dirección de programas · Admisiones · Bienestar',ind:'% estudiantes caracterizados al ingreso · Alertas activadas en semana 1 · Satisfacción con el proceso de admisión',fr:['F1','F2','F8']},
+  {ic:'🌱',lb:'Inducción y Adaptación',dx:'Alta incertidumbre inicial sobre rutas académicas, servicios disponibles y expectativas del programa. La inducción actual es informativa, no formativa ni personalizada.',op:'Inducción activa y diferenciada: mentoría de pares, mapa de servicios, orientación docente y activación de primeras alertas de seguimiento.',ac:'Coordinaciones académicas · Bienestar universitario · Docentes tutores',ind:'Satisfacción con inducción · Uso de tutorías en primeras 4 semanas · % estudiantes con mentor asignado',fr:['F5','F8','F1']},
+  {ic:'📚',lb:'Formación Académica',dx:'Variabilidad pedagógica entre docentes; escasa retroalimentación sistemática y estructurada. Los estudiantes perciben inconsistencia en la calidad del aprendizaje entre asignaturas y docentes.',op:'Consolidar un modelo de enseñanza activa, evaluación formativa con rúbricas y uso responsable de IA educativa en todos los programas.',ac:'Docentes · Coordinaciones académicas · Unidad de tecnología educativa',ind:'% asignaturas con evaluación formativa · % docentes formados en pedagogía activa · Satisfacción con calidad de enseñanza',fr:['F3','F4','F7']},
+  {ic:'📋',lb:'Evaluación y Seguimiento',dx:'Evaluación predominantemente sumativa, con retroalimentación tardía y sin sistemas de alerta temprana consolidados. Los estudiantes reciben información cuando el rezago ya es crítico.',op:'Sistema integrado de seguimiento con rúbricas, ciclos de feedback oportuno y alertas automáticas antes del rezago acumulado.',ac:'Docentes · Coordinaciones · Plataforma LMS · Sistema de analítica',ind:'Tiempo promedio de retroalimentación · % alertas generadas y atendidas · Reducción en reprobación de cursos críticos',fr:['F2','F3','F4']},
+  {ic:'🏨',lb:'Prácticas Formativas',dx:'Coordinación compleja entre Facultad y sitios de práctica; evaluación inconsistente y poco estandarizada. Los docentes de práctica no siempre tienen formación en evaluación por competencias.',op:'Articular simulación, debriefing estructurado, acompañamiento docente y evaluación por competencias en una red curricular progresiva de práctica.',ac:'Coordinaciones de práctica · Docentes clínicos · Instituciones aliadas · FOSCAL',ind:'Horas de simulación por estudiante · Escenarios con debriefing · Satisfacción con prácticas · Desempeño en rotaciones',fr:['F6','F3','F8']},
+  {ic:'💚',lb:'Bienestar y Permanencia',dx:'Atención al bienestar predominantemente reactiva; escasa articulación entre señales académicas y respuesta de bienestar psicosocial. La percepción estudiantil es el único factor sin votos de futuro: es urgente.',op:'Rutas de derivación integradas entre seguimiento académico y apoyo psicosocial. Intervención proactiva antes del abandono silencioso.',ac:'Bienestar universitario · Docentes tutores · Coordinaciones académicas',ind:'Tasa de permanencia semestral · Alertas psicosociales atendidas · Tiempo de respuesta bienestar · % estudiantes con plan de apoyo activo',fr:['F5','F2','F1']},
+  {ic:'🎓',lb:'Graduación y Empleabilidad',dx:'Brecha entre el perfil de egreso institucional y las competencias que demanda el mercado laboral. Escasa articulación entre formación y trayectoria profesional posterior a la graduación.',op:'Portafolios de competencias, vinculación laboral temprana, seguimiento de egresados e investigación formativa como puentes entre formación y empleabilidad.',ac:'Dirección de programas · Decanatura · Relaciones externas · Egresados',ind:'Tasa de graduación oportuna · Empleabilidad temprana · Satisfacción del egresado · Valoración de empleadores',fr:['F7','F6','F3']},
+  {ic:'🤝',lb:'Egresado y Vínculo',dx:'Seguimiento sistemático al egresado débil o inexistente. Escasa retroalimentación del mercado laboral al currículo. La Facultad no aprovecha la red de egresados como activo estratégico.',op:'Sistema activo de seguimiento a egresados, red de mentorías con estudiantes actuales y mecanismo de retroalimentación curricular desde el ejercicio profesional.',ac:'Decanatura · Investigación · Vinculación externa · Red de egresados',ind:'% egresados encuestados anualmente · Satisfacción de empleadores · Iniciativas de retorno de egresados a la Facultad',fr:['F7','F2','F8']},
 ];
-
-new Chart(document.getElementById('chartMatrix'), {
-  type: 'bubble',
-  data: {
-    datasets: matrixData.map((d,i) => ({
-      label: d.label.replace('\n',' '),
-      data: [{ x: d.x, y: d.y, r: d.r }],
-      backgroundColor: d.color + 'cc',
-      borderColor: d.color,
-      borderWidth: 2,
-    }))
-  },
-  options: {
-    responsive: true, maintainAspectRatio: false,
-    plugins: {
-      legend: { display: false },
-      tooltip: {
-        callbacks: {
-          title: ctx => ctx[0].dataset.label,
-          label: ctx => ` Factibilidad: ${Math.round(ctx.parsed.x*100)}% | Impacto: ${Math.round(ctx.parsed.y*100)}%`
-        }
-      }
-    },
-    scales: {
-      x: {
-        min: 0.1, max: 1.05,
-        title: { display: true, text: '← Factibilidad de implementación →', font: { size: 12 } },
-        grid: { color: '#dde3ee' },
-        ticks: { callback: v => v*100+'%' }
-      },
-      y: {
-        min: 0.55, max: 1.05,
-        title: { display: true, text: '← Impacto sobre aprendizaje y experiencia →', font: { size: 12 } },
-        grid: { color: '#dde3ee' },
-        ticks: { callback: v => v*100+'%' }
-      }
-    }
-  },
-  plugins: [{
-    afterDatasetsDraw(chart) {
-      const ctx = chart.ctx;
-      ctx.save();
-      chart.data.datasets.forEach((ds, i) => {
-        const meta = chart.getDatasetMeta(i);
-        if(!meta.hidden) {
-          const pt = meta.data[0];
-          const label = ds.label;
-          const lines = label.split(' ');
-          ctx.font = '600 10px DM Sans, sans-serif';
-          ctx.fillStyle = '#fff';
-          ctx.textAlign = 'center';
-          ctx.textBaseline = 'middle';
-          const lineH = 13;
-          const startY = pt.y - ((lines.length-1)*lineH/2);
-          lines.forEach((line, li) => ctx.fillText(line, pt.x, startY + li*lineH));
-        }
-      });
-      ctx.restore();
-    }
-  }]
-});
-
-// ── JOURNEY DATA ──
-const journeyData = [
-  {
-    label:'Admisión e Ingreso', icon:'🎯',
-    dolor:'Proceso poco articulado con la caracterización académica y socioeconómica del estudiante entrante.',
-    oportunidad:'Implementar un perfil de ingreso que identifique fortalezas, riesgos y necesidades desde el primer contacto.',
-    actor:'Decanatura · Dirección de programas · Admisiones',
-    indicador:'% estudiantes caracterizados al ingresar · Requiere construir línea base.',
-    frentes:['F1 Educación personalizada','F2 Analítica y alertas','F8 Comunicación']
-  },
-  {
-    label:'Inducción y Adaptación', icon:'🌱',
-    dolor:'Alta incertidumbre inicial sobre rutas, servicios y expectativas académicas.',
-    oportunidad:'Crear una inducción activa y diferenciada que incluya mentoría, mapa de servicios y primeras alertas tempranas.',
-    actor:'Coordinaciones académicas · Bienestar universitario',
-    indicador:'Satisfacción con inducción · Activación de tutorías en semana 1 · Requiere construir línea base.',
-    frentes:['F5 Bienestar y permanencia','F8 Comunicación','F1 Educación personalizada']
-  },
-  {
-    label:'Formación Académica', icon:'📚',
-    dolor:'Variabilidad pedagógica entre docentes; escasa retroalimentación sistemática.',
-    oportunidad:'Consolidar un modelo de enseñanza activa, evaluación formativa y uso responsable de IA educativa.',
-    actor:'Docentes · Coordinaciones · Tecnología educativa',
-    indicador:'% asignaturas con evaluación formativa activa · % docentes formados en IA · Requiere construir línea base.',
-    frentes:['F3 Evaluación formativa','F4 Desarrollo docente','F7 Currículo integrado']
-  },
-  {
-    label:'Evaluación y Seguimiento', icon:'📋',
-    dolor:'Evaluación enfocada en calificación, con poca retroalimentación y sin alertas tempranas consolidadas.',
-    oportunidad:'Diseñar sistemas de seguimiento con rúbricas, ciclos de feedback y alertas antes del rezago.',
-    actor:'Docentes · Coordinaciones · Plataforma LMS',
-    indicador:'Tiempo promedio de retroalimentación · % alertas generadas y atendidas · Requiere construir línea base.',
-    frentes:['F2 Analítica y alertas','F3 Evaluación formativa','F4 Desarrollo docente']
-  },
-  {
-    label:'Prácticas Formativas', icon:'🏨',
-    dolor:'Coordinación compleja entre Facultad y sitios de práctica; evaluación poco estandarizada.',
-    oportunidad:'Articular simulación, debriefing, acompañamiento docente y evaluación por competencias en práctica.',
-    actor:'Coordinaciones de práctica · Docentes clínicos · Instituciones aliadas',
-    indicador:'Satisfacción con prácticas · Desempeño en rotaciones · Requiere construir línea base.',
-    frentes:['F6 Simulación y práctica','F3 Evaluación formativa','F8 Comunicación']
-  },
-  {
-    label:'Bienestar y Permanencia', icon:'💚',
-    dolor:'Atención reactiva; poca articulación entre señales académicas y respuesta de bienestar.',
-    oportunidad:'Construir rutas de derivación integradas entre seguimiento académico y apoyo psicosocial.',
-    actor:'Bienestar universitario · Docentes tutores · Coordinaciones',
-    indicador:'Tasa de permanencia · Alertas psicosociales atendidas · Uso de tutorías · Requiere construir línea base.',
-    frentes:['F5 Bienestar y permanencia','F2 Analítica y alertas','F1 Educación personalizada']
-  },
-  {
-    label:'Graduación y Empleabilidad', icon:'🎓',
-    dolor:'Escasa articulación entre el perfil de egreso, las competencias esperadas y el mercado laboral.',
-    oportunidad:'Crear portafolios de competencias, vinculación laboral temprana y seguimiento a proyectos de investigación formativa.',
-    actor:'Dirección de programas · Decanatura · Egresados',
-    indicador:'Tasa de graduación a tiempo · Empleabilidad temprana · Requiere construir línea base.',
-    frentes:['F7 Currículo integrado','F6 Simulación y práctica','F3 Evaluación formativa']
-  },
-  {
-    label:'Egresado y Vínculo Posterior', icon:'🤝',
-    dolor:'Bajo seguimiento sistemático al egresado y escasa retroalimentación al currículo desde su experiencia.',
-    oportunidad:'Implementar un sistema de seguimiento a egresados y aliados empleadores para mejorar la pertinencia curricular.',
-    actor:'Decanatura · Investigación · Vinculación externa',
-    indicador:'% egresados encuestados · Satisfacción de empleadores · Requiere construir línea base.',
-    frentes:['F7 Currículo integrado','F2 Analítica y alertas','F8 Comunicación']
-  }
-];
-
-function selectJourney(idx, el) {
-  document.querySelectorAll('.journey-step').forEach(s => s.classList.remove('active'));
-  el.classList.add('active');
-  el.querySelector('.journey-node').style.background = 'var(--navy)';
-  const d = journeyData[idx];
-  document.getElementById('journeyPanel').innerHTML = `
-    <h3 style="font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--navy);margin-bottom:1.25rem;display:flex;align-items:center;gap:0.5rem;">
-      <span>${d.icon}</span> ${d.label}
-    </h3>
-    <div class="jd-grid">
-      <div class="jd-item">
-        <h5>🔴 Fricción / Dolor posible</h5>
-        <p>${d.dolor}</p>
-      </div>
-      <div class="jd-item">
-        <h5>🟢 Oportunidad estratégica</h5>
-        <p>${d.oportunidad}</p>
-      </div>
-      <div class="jd-item">
-        <h5>👥 Actor responsable</h5>
-        <p>${d.actor}</p>
-      </div>
-      <div class="jd-item">
-        <h5>📊 Indicador sugerido</h5>
-        <p>${d.indicador}</p>
-        <div style="margin-top:0.75rem;">${d.frentes.map(f=>`<span class="tag">${f}</span> `).join('')}</div>
-      </div>
-    </div>
-  `;
+function selJ(i,el){
+  document.querySelectorAll('.js').forEach(s=>s.classList.remove('sel'));
+  el.classList.add('sel');
+  const d=JD[i];
+  document.getElementById('jpan').innerHTML=`<div class="jptit">${d.ic} ${d.lb}</div><div class="jpg"><div class="ji"><h5>🔴 Diagnóstico de fricción</h5><p>${d.dx}</p></div><div class="ji"><h5>🟢 Oportunidad estratégica</h5><p>${d.op}</p></div><div class="ji"><h5>👥 Actores responsables</h5><p>${d.ac}</p></div><div class="ji"><h5>📊 Indicadores de seguimiento</h5><p>${d.ind}</p><div style="margin-top:.6rem">${d.fr.map(f=>`<span class="jtag">${f}</span>`).join('')}</div></div></div>`;
 }
 
-// ── TIMELINE TABS ──
-function switchTab(idx) {
-  document.querySelectorAll('.tl-tab').forEach((t,i) => t.classList.toggle('active', i===idx));
-  document.querySelectorAll('.tl-panel').forEach((p,i) => p.classList.toggle('active', i===idx));
+/* ── TABS ── */
+function swT(i){
+  document.querySelectorAll('.ttab').forEach((t,j)=>t.classList.toggle('on',i===j));
+  document.querySelectorAll('.tpan').forEach((p,j)=>p.classList.toggle('on',i===j));
 }
+
+/* ── NAV ACTIVE ── */
+const SS=document.querySelectorAll('section[id],div[id="kpis"]');
+const NL=document.querySelectorAll('.nr a');
+window.addEventListener('scroll',()=>{
+  let c='';SS.forEach(s=>{if(window.scrollY>=s.offsetTop-80)c=s.id});
+  NL.forEach(a=>a.classList.toggle('act',a.getAttribute('href')==='#'+c));
+},{passive:true});
 </script>
 </body>
 </html>
